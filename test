@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Test</title>
+  <link href="style3.css" rel="stylesheet" type="text/css" />
+<style>
+p {
+font-size: 12px;
+}
+</style>
+</head>
+<button onclick="basicClicker()">Click to increment</button>
+<p id="Count"></p>
+<button onclick="upgrade()">Upgrade</button>
+<p id="currentCost"></p>
+<button onclick="idleLevel()">Buy an indentured servent</button>
+<p>(you won't be paying him, but he'll gain number for you)
+(Doesn't work yet)</p>
+<script>
+var int;
+var mult;
+var currentCost;
+var idle;
+int=0;
+mult=0;
+currentCost=1;
+idle=0;
+document.getElementById("Count").innerHTML = int;
+document.getElementById("currentCost").innerHTML = "Current Cost Is " + (5*currentCost)+".";
+function idleLevel() {
+idle+=1;
+}
+function basicClicker() {
+int+=1 + mult;
+document.getElementById("Count").innerHTML = int;
+}
+function upgrade() {
+if (int>=5*currentCost) {
+mult+=1;
+int = int-(5*currentCost);
+currentCost = currentCost*2;
+document.getElementById("Count").innerHTML = int;
+}
+document.getElementById("currentCost").innerHTML = "Current cost is " + (5*currentCost)+".";
+}
+
+</script>
+
+</html>
