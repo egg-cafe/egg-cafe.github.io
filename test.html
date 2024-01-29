@@ -20,14 +20,17 @@ font-size: 12px;
 (Doesn't work yet)</p>
 <script>
   var int = parseInt(localStorage.getItem('int')) || 0;
-  var mult = 0;
-  var currentCost = 1;
-  var idle = 0;
+  var mult = parseInt(localStorage.getItem('mult')) || 0;
+  var currentCost = parseInt(localStorage.getItem('currentCost')) || 1;
+  var idle = parseInt(localStorage.getItem('idle')) || 0;
   document.getElementById("Count").innerHTML = int;
   document.getElementById("currentCost").innerHTML = "Current Cost Is " + (5 * currentCost) + ".";
   function saveToLocalStorage() {
   // Save the current value of 'int' to localStorage
   localStorage.setItem('int', int.toString());
+  localStorage.setItem('mult', mult.toString());
+  localStorage.setItem('currentCost', currentCost.toString());
+  localStorage.setItem('idle', idle.toString());
   }
   function idleLevel() {
   idle += 1;
