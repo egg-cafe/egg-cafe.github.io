@@ -19,33 +19,35 @@ font-size: 12px;
 <p>(you won't be paying him, but he'll gain number for you)
 (Doesn't work yet)</p>
 <script>
-var int;
-var mult;
-var currentCost;
-var idle;
-int=0;
-mult=0;
-currentCost=1;
-idle=0;
-document.getElementById("Count").innerHTML = int;
-document.getElementById("currentCost").innerHTML = "Current Cost Is " + (5*currentCost)+".";
-function idleLevel() {
-idle+=1;
-}
-function basicClicker() {
-int+=1 + mult;
-document.getElementById("Count").innerHTML = int;
-}
-function upgrade() {
-if (int>=5*currentCost) {
-mult+=1;
-int = int-(5*currentCost);
-currentCost = currentCost*2;
-document.getElementById("Count").innerHTML = int;
-}
-document.getElementById("currentCost").innerHTML = "Current cost is " + (5*currentCost)+".";
-}
-
+  var int = parseInt(localStorage.getItem('int')) || 0;
+  var mult = 0;
+  var currentCost = 1;
+  var idle = 0;
+  document.getElementById("Count").innerHTML = int;
+  document.getElementById("currentCost").innerHTML = "Current Cost Is " + (5 * currentCost) + ".";
+  function saveToLocalStorage() {
+  // Save the current value of 'int' to localStorage
+  localStorage.setItem('int', int.toString());
+  }
+  function idleLevel() {
+  idle += 1;
+  saveToLocalStorage();
+  }
+  function basicClicker() {
+  int += 1 + mult;
+  document.getElementById("Count").innerHTML = int;
+  saveToLocalStorage();
+  }
+  function upgrade() {
+  if (int >= 5 * currentCost) {
+  mult += 1;
+  int = int - (5 * currentCost);
+  currentCost = currentCost * 2;
+  document.getElementById("Count").innerHTML = int;
+  saveToLocalStorage();
+  }
+  document.getElementById("currentCost").innerHTML = "Current cost is " + (5 * currentCost) + ".";
+  }
 </script>
 
 </html>
