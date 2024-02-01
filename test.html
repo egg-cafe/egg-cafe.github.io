@@ -26,13 +26,14 @@ font-size: 12px;
   var idleCost = parseInt(localStorage.getItem('idleCost')) || 1;
   document.getElementById("Count").innerHTML = int;
   document.getElementById("currentCost").innerHTML = "Current Cost Is " + (5 * currentCost) + ".";
+  document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + ".";
   function saveToLocalStorage() {
   // Save the current value of 'int' to localStorage
   localStorage.setItem('int', int.toString());
   localStorage.setItem('mult', mult.toString());
   localStorage.setItem('currentCost', currentCost.toString());
   localStorage.setItem('idle', idle.toString());
-  var idleCost = parseInt(localStorage.getItem('idleCost')) || 1;
+  localStorage.setItem('idleCost', idleCost.toString());
   }
   function idleLevel() {
   if (int >= 100 * idleCost) {
@@ -42,7 +43,7 @@ font-size: 12px;
   document.getElementById("Count").innerHTML = int;
   saveToLocalStorage();
   }
-  document.getElementById("idleCost").innerHTML = "Current cost is " + (5 * idleCost) + ".";
+  document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + ".";
   }
   function basicClicker() {
   int += 1 + mult;
@@ -61,7 +62,8 @@ font-size: 12px;
   }
   while (idle >= 1) {
     int += idle;
-    sleep(100)
+    sleep(1000)
+    document.getElementById("Count").innerHTML = int;
   }
 </script>
 
