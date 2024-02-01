@@ -17,6 +17,7 @@ font-size: 12px;
 <p id="currentCost"></p>
 <p id="upgrade"></p>
 <button onclick="idleLevel()" class="showText">Buy an indentured servant</button>
+<div onclick="idleLevel()" class = "showText">Buy an indentured servant</div>
 <p id="idleCost"></p>
 <div class="hiddenText">He is unpaid, and he is happy.</div>
 <p class = "hiddenText">He also lives in the factory and has an 18-hour work day.</p>
@@ -26,6 +27,7 @@ font-size: 12px;
 <p id="domainCost"></p>
 <p>Yeah we aren't sure how you can just buy that.</p>
 <p id="domainLevel"></p>
+<button onclick="setAll()">Did a number not update upon opening this page? Press this.</button>
 <script>
   var int = parseInt(localStorage.getItem('int')) || 0;
   var mult = parseInt(localStorage.getItem('mult')) || 0;
@@ -34,13 +36,16 @@ font-size: 12px;
   var idleCost = parseInt(localStorage.getItem('idleCost')) || 1;
   var domain = parseInt(localStorage.getItem('domain')) || 0;
   var domainCost = parseInt(localStorage.getItem('domainCost')) || 1;
+  setAll();
+  function setAll() {
   document.getElementById("Count").innerHTML = (int + " Int.");
   document.getElementById("currentCost").innerHTML = "Current Cost is " + (5 * currentCost) + " Int.";
   document.getElementById("upgrade").innerHTML = "Your current upgrade level is " + mult + "."
   document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + " Int.";
   document.getElementById("idleLv").innerHTML = "You have " + idle + " employees.";
   document.getElementById("domainCost").innerHTML = "Current cost is " (1000 * domainCost) + " Int.";
-  document.getElementById("domainLevel").innerHTML = "You have " + domain + " sorcerers opening domains."
+  document.getElementById("domainLevel").innerHTML = "You have " + domain + " sorcerers opening domains.";
+  }  
   function saveToLocalStorage() {
   // Save the current value of 'int' to localStorage
   localStorage.setItem('int', int.toString());
