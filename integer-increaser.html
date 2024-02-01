@@ -27,9 +27,9 @@ font-size: 12px;
   var currentCost = parseInt(localStorage.getItem('currentCost')) || 1;
   var idle = parseInt(localStorage.getItem('idle')) || 0;
   var idleCost = parseInt(localStorage.getItem('idleCost')) || 1;
-  document.getElementById("Count").innerHTML = int;
-  document.getElementById("currentCost").innerHTML = "Current Cost Is " + (5 * currentCost) + ".";
-  document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + ".";
+  document.getElementById("Count").innerHTML = (int + " Int.");
+  document.getElementById("currentCost").innerHTML = "Current Cost Is " + (5 * currentCost) + " Int.";
+  document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + " Int.";
   document.getElementById("idleLv").innerHTML = "You have " + idle + " employees";
   function saveToLocalStorage() {
   // Save the current value of 'int' to localStorage
@@ -40,7 +40,7 @@ font-size: 12px;
   localStorage.setItem('idleCost', idleCost.toString());
   }
   function update() {
-  document.getElementById("Count").innerHTML = int;
+  document.getElementById("Count").innerHTML = (int + " Int.");
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
   saveToLocalStorage();
   } 
@@ -51,7 +51,7 @@ font-size: 12px;
   idleCost = idleCost * 2;
   update();
   }
-  document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + ".";
+  document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + " Int.";
   document.getElementById("idleLv").innerHTML = "You have " + idle + " employees";
   }
   function basicClicker() {
@@ -65,7 +65,7 @@ font-size: 12px;
   currentCost = currentCost * 2;
   update();
   }
-  document.getElementById("currentCost").innerHTML = "Current cost is " + (5 * currentCost) + ".";
+  document.getElementById("currentCost").innerHTML = "Current cost is " + (5 * currentCost) + " Int.";
   }
   setInterval(() => {
     int += idle;
