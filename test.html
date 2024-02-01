@@ -15,14 +15,15 @@ font-size: 12px;
 <p id="Count"></p>
 <button onclick="upgrade()">Upgrade</button>
 <p id="currentCost"></p>
-<button onclick="idleLevel()">Buy an indentured servent</button>
-<p>(you won't be paying him, but he'll gain number for you)
-(Doesn't work yet)</p>
+<button onclick="idleLevel()">Buy an indentured servant</button>
+<p id="idleCost"></p>
+<p>He is unpaid, and he is happy.</p>
 <script>
   var int = parseInt(localStorage.getItem('int')) || 0;
   var mult = parseInt(localStorage.getItem('mult')) || 0;
   var currentCost = parseInt(localStorage.getItem('currentCost')) || 1;
   var idle = parseInt(localStorage.getItem('idle')) || 0;
+  var idleCost = parseInt(localStorage.getItem('idleCost')) || 1;
   document.getElementById("Count").innerHTML = int;
   document.getElementById("currentCost").innerHTML = "Current Cost Is " + (5 * currentCost) + ".";
   function saveToLocalStorage() {
@@ -31,10 +32,17 @@ font-size: 12px;
   localStorage.setItem('mult', mult.toString());
   localStorage.setItem('currentCost', currentCost.toString());
   localStorage.setItem('idle', idle.toString());
+  var idleCost = parseInt(localStorage.getItem('idleCost')) || 1;
   }
   function idleLevel() {
+  if (int >= 100 * idleCost) {
   idle += 1;
+  int = int - (5 * idleCost);
+  idleCost = idleCost * 2;
+  document.getElementById("Count").innerHTML = int;
   saveToLocalStorage();
+  }
+  document.getElementById("idleCost").innerHTML = "Current cost is " + (5 * idleCost) + ".";
   }
   function basicClicker() {
   int += 1 + mult;
@@ -50,6 +58,10 @@ font-size: 12px;
   saveToLocalStorage();
   }
   document.getElementById("currentCost").innerHTML = "Current cost is " + (5 * currentCost) + ".";
+  }
+  while (idle >= 1) {
+    int += idle;
+    sleep(100)
   }
 </script>
 
