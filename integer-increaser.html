@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Test</title>
+  <title id="title">Integer Increaser - 0 Int</title>
   <link href="style3.css" rel="stylesheet" type="text/css" />
 <style>
 p {
@@ -18,6 +18,7 @@ font-size: 12px;
 <button onclick="idleLevel()">Buy an indentured servant</button>
 <p id="idleCost"></p>
 <p>He is unpaid, and he is happy.</p>
+<p id="idleLv">You have 0 employees.</p>
 <script>
   var int = parseInt(localStorage.getItem('int')) || 0;
   var mult = parseInt(localStorage.getItem('mult')) || 0;
@@ -27,6 +28,7 @@ font-size: 12px;
   document.getElementById("Count").innerHTML = int;
   document.getElementById("currentCost").innerHTML = "Current Cost Is " + (5 * currentCost) + ".";
   document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + ".";
+  document.getElementById("idleLv").innerHTML = "You have " + idle + " employees";
   function saveToLocalStorage() {
   // Save the current value of 'int' to localStorage
   localStorage.setItem('int', int.toString());
@@ -35,35 +37,37 @@ font-size: 12px;
   localStorage.setItem('idle', idle.toString());
   localStorage.setItem('idleCost', idleCost.toString());
   }
+  function update() {
+  document.getElementById("Count").innerHTML = int;
+  document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
+  saveToLocalStorage();
+  } 
   function idleLevel() {
   if (int >= 100 * idleCost) {
   idle += 1;
   int = int - (100 * idleCost);
   idleCost = idleCost * 2;
-  document.getElementById("Count").innerHTML = int;
-  saveToLocalStorage();
+  update();
   }
   document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + ".";
+  document.getElementById("idleLv").innerHTML = "You have " + idle + " employees";
   }
   function basicClicker() {
   int += 1 + mult;
-  document.getElementById("Count").innerHTML = int;
-  saveToLocalStorage();
+  update();
   }
   function upgrade() {
   if (int >= 5 * currentCost) {
   mult += 1;
   int = int - (5 * currentCost);
   currentCost = currentCost * 2;
-  document.getElementById("Count").innerHTML = int;
-  saveToLocalStorage();
+  update();
   }
   document.getElementById("currentCost").innerHTML = "Current cost is " + (5 * currentCost) + ".";
   }
   setInterval(() => {
     int += idle;
-    document.getElementById("Count").innerHTML = int;
-    saveToLocalStorage();
+    update();
   }, 1000);
 </script>
 
