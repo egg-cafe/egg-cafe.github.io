@@ -38,7 +38,7 @@ font-size: 12px;
   function idleLevel() {
   if (int >= 100 * idleCost) {
   idle += 1;
-  int = int - (5 * idleCost);
+  int = int - (100 * idleCost);
   idleCost = idleCost * 2;
   document.getElementById("Count").innerHTML = int;
   saveToLocalStorage();
