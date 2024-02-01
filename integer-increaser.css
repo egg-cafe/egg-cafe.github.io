@@ -1,0 +1,8 @@
+.hidle {
+  display: none;
+}
+
+.idleHover:hover + .hidle {
+  display: block;
+  color: red;
+}
