@@ -45,7 +45,6 @@ font-size: 12px;
   document.getElementById("domainLevel").innerHTML = "You have " + domain + " sorcerers opening domains.";
   }  
   function saveToLocalStorage() {
-  // Save the current value of 'int' to localStorage
   localStorage.setItem('int', int.toString());
   localStorage.setItem('mult', mult.toString());
   localStorage.setItem('currentCost', currentCost.toString());
@@ -67,7 +66,7 @@ font-size: 12px;
       update();
     }  
     document.getElementById("domainCost").innerHTML = "Current cost is " + (1000 * domainCost) + " Int.";
-    document.getElementById("domainLevel").innerHTML = "You have " + domain + " sorcerers opening domains."
+    document.getElementById("domainLevel").innerHTML = "You have " + domain + " sorcerers opening domains.";
   } 
   function idleLevel() {
   if (int >= 100 * idleCost) {
@@ -95,7 +94,7 @@ font-size: 12px;
   }
   setInterval(() => {
     int += idle;
-    
+    int += (domain*3);
     update();
   }, 1000);
 </script>
