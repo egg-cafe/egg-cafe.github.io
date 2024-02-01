@@ -60,11 +60,10 @@ font-size: 12px;
   }
   document.getElementById("currentCost").innerHTML = "Current cost is " + (5 * currentCost) + ".";
   }
-  while (idle >= 1) {
+  setInterval(() => {
     int += idle;
-    sleep(1000)
     document.getElementById("Count").innerHTML = int;
-  }
+  }, 1000);
 </script>
 
 </html>
