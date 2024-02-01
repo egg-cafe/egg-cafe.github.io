@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title id="title">Integer Increaser - 0 Int</title>
-  <link href="style3.css" rel="stylesheet" type="text/css" />
+  <link href="integer-increaser.css" rel="stylesheet" type="text/css" />
 <style>
 p {
 font-size: 12px;
@@ -15,22 +15,28 @@ font-size: 12px;
 <p id="Count"></p>
 <button onclick="upgrade()">Upgrade</button>
 <p id="currentCost"></p>
-<button onclick="idleLevel()">Buy an indentured servant</button>
+<button onclick="idleLevel()" class="idleHover">Buy an indentured servant</button>
 <p id="idleCost"></p>
-<p>He is unpaid, and he is happy.</p>
-<p>He also lives in the factory and has an 18-hour work day.</p>
+<div class="hidle">He is unpaid, and he is happy.</div>
+<p class = "hidle">He also lives in the factory and has an 18-hour work day.</p>
 <p>His 6 hours off he spends working because it's all he knows.</p>
 <p id="idleLv">You have 0 employees.</p>
+<button onclick="domainLevel()">Buy a domain expansion.</button>
+<p class = "domainCost"></p>
+<p>Yeah we aren't sure how you can just buy that.</p>
 <script>
   var int = parseInt(localStorage.getItem('int')) || 0;
   var mult = parseInt(localStorage.getItem('mult')) || 0;
   var currentCost = parseInt(localStorage.getItem('currentCost')) || 1;
   var idle = parseInt(localStorage.getItem('idle')) || 0;
   var idleCost = parseInt(localStorage.getItem('idleCost')) || 1;
+  var domain = parseInt(localStorage.getItem('domain')) || 0;
+  var domainCost = parseInt(localStorage.getItem('domainCost')) || 1;
   document.getElementById("Count").innerHTML = (int + " Int.");
-  document.getElementById("currentCost").innerHTML = "Current Cost Is " + (5 * currentCost) + " Int.";
+  document.getElementById("currentCost").innerHTML = "Current Cost is " + (5 * currentCost) + " Int.";
   document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + " Int.";
-  document.getElementById("idleLv").innerHTML = "You have " + idle + " employees";
+  document.getElementById("idleLv").innerHTML = "You have " + idle + " employees.";
+  document.getElementById("domainCost").innerHTML = "Current cost is " (1000 * domainCost) + " Int.";
   function saveToLocalStorage() {
   // Save the current value of 'int' to localStorage
   localStorage.setItem('int', int.toString());
@@ -38,11 +44,23 @@ font-size: 12px;
   localStorage.setItem('currentCost', currentCost.toString());
   localStorage.setItem('idle', idle.toString());
   localStorage.setItem('idleCost', idleCost.toString());
+  localStorage.setItem('domain', domain.toString());
+  localStorage.setItem('domainCost', domainCost.toString());
   }
   function update() {
   document.getElementById("Count").innerHTML = (int + " Int.");
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
   saveToLocalStorage();
+  } 
+  function domainLevel() {
+    if (int >= 1000 * domainCost) {
+      domain +=1;
+      int = int - (1000 * domainCost);
+      domainCost = domainCost * 2;
+      update();
+    }  
+    document.getElementById("domainCost").innerHTML = "Current cost is " + (1000 * domainCost) + " Int.";
+    document.getElementById("domainLevel").innerHTML = "You have " + domain + " sorcerers opening domains."
   } 
   function idleLevel() {
   if (int >= 100 * idleCost) {
