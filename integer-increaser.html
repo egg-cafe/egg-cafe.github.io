@@ -15,14 +15,14 @@ font-size: 12px;
 <p id="Count"></p>
 <button onclick="upgrade()">Upgrade</button>
 <p id="currentCost"></p>
-<button onclick="idleLevel()" class="idleHover">Buy an indentured servant</button>
+<button onclick="idleLevel()" class="showText">Buy an indentured servant</button>
 <p id="idleCost"></p>
-<div class="hidle">He is unpaid, and he is happy.</div>
-<p class = "hidle">He also lives in the factory and has an 18-hour work day.</p>
+<div class="hiddenText">He is unpaid, and he is happy.</div>
+<p class = "hiddenText">He also lives in the factory and has an 18-hour work day.</p>
 <p>His 6 hours off he spends working because it's all he knows.</p>
 <p id="idleLv">You have 0 employees.</p>
 <button onclick="domainLevel()">Buy a domain expansion.</button>
-<p class = "domainCost"></p>
+<p id="domainCost"></p>
 <p>Yeah we aren't sure how you can just buy that.</p>
 <script>
   var int = parseInt(localStorage.getItem('int')) || 0;
@@ -87,6 +87,7 @@ font-size: 12px;
   }
   setInterval(() => {
     int += idle;
+    int += (domain*3);
     update();
   }, 1000);
 </script>
