@@ -42,6 +42,7 @@ font-size: 12px;
   document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + " Int.";
   document.getElementById("idleLv").innerHTML = "You have " + idle + " employees.";
   document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + " Int.";
+  document.getElementById("domainCost").innerHTML = "Current cost is " + (1000 * domainCost) + " Int.";
   document.getElementById("domainLevel").innerHTML = "You have " + domain + " sorcerers opening domains.";
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
   }  
@@ -66,7 +67,7 @@ font-size: 12px;
       domainCost = domainCost * 2;
       update();
     }  
-    document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + " Int.";
+    document.getElementById("domainCost").innerHTML = "Current cost is " + (1000 * domainCost) + " Int.";
     document.getElementById("domainLevel").innerHTML = "You have " + domain + " sorcerers opening domains.";
   } 
   function idleLevel() {
