@@ -35,6 +35,7 @@ font-family: 'Cabin', sans-serif;
 <button onclick="buyGod()" tabindex="-1">Bribe God</button>
 <p id = "godCost"></p>
 <p id = "godLv"></p> 
+<p id=showChangelog onclick="changelog()">Click to show/hide changelog.</p>
 <script>
   var int = parseInt(localStorage.getItem('int')) || 0;
   var mult = parseInt(localStorage.getItem('mult')) || 0;
@@ -46,7 +47,18 @@ font-family: 'Cabin', sans-serif;
   var god = parseInt(localStorage.getItem('god')) || 0;
   var godCost = parseInt(localStorage.getItem('godCost')) || 1;
   var grandMult = parseInt(localStorage.getItem('grantMult')) || 1;
+  var changelog = "I added this changelog, along with changing pricing values.";
+  const isShownChangelog = false;//This value doesn't need to be stored.
   setAll();
+  function changelog() {
+    if (isShownChangelog == false) {
+      isShownChangelog = true;
+      document.getElementById("showChangelog").innerHTML = changelog;
+    } else if (isShownChangelog == true) {
+      isShownChangelog = false;
+      document.getElementById("showChangelog").innerHTML = "Click to show/hide changelog.";
+    }  
+  }  
   function setAll() {
   document.getElementById("Count").innerHTML = (int + " Int.");
   document.getElementById("currentCost").innerHTML = "Current Cost is " + (5 * currentCost) + " Int.";
@@ -78,7 +90,7 @@ font-family: 'Cabin', sans-serif;
     god +=1;
     grandMult +=1;
     int = int - (10000 * godCost);
-     godCost = godCost * 10;
+     godCost = godCost * (3**god);
      update();
    }
     document.getElementById("godCost").innerHTML = "The cost to bribe God is "+ (10000 * godCost) + " Int.";
@@ -94,7 +106,7 @@ font-family: 'Cabin', sans-serif;
     if (int >= 1000 * domainCost) {
       domain +=1;
       int = int - (1000 * domainCost);
-      domainCost = domainCost * 2;
+      domainCost = domainCost * (1.20**domain);
       update();
     }  
     document.getElementById("domainCost").innerHTML = "Current cost is " + (1000 * domainCost) + " Int.";
@@ -104,7 +116,7 @@ font-family: 'Cabin', sans-serif;
   if (int >= 100 * idleCost) {
   idle += 1;
   int = int - (100 * idleCost);
-  idleCost = idleCost * 2;
+  idleCost = idleCost * (1.20**idle);
   update();
   }
   document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + " Int.";
@@ -118,7 +130,7 @@ font-family: 'Cabin', sans-serif;
   if (int >= 5 * currentCost) {
   mult += 1;
   int = int - (5 * currentCost);
-  currentCost = currentCost * 2;
+  currentCost = currentCost * (1.20**mult);
   update();
   }
   document.getElementById("currentCost").innerHTML = "Current cost is " + (5 * currentCost) + " Int.";
