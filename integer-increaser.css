@@ -1,5 +1,6 @@
 html, body {
   font-family: 'Cabin', sans-serif;
+  text-align: center;
 }
 button {
   border-radius: 25px;
