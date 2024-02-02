@@ -4,6 +4,7 @@ html, body {
 button {
   border-radius: 100px;
   width: 100%;
+  text-align: center;
   padding: 40px;
-  max-width: 200px;
+  width: 200px;
 }
