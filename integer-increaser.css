@@ -1,3 +1,11 @@
 html, body {
   font-family: 'Cabin', sans-serif;
 }
+button {
+  border-radius: 10px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  max-width: 20px;
+}
