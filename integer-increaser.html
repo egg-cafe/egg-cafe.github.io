@@ -45,13 +45,13 @@ font-size: 200%;
 <script>
   var int = parseInt(localStorage.getItem('int')) || 0;
   var mult = parseInt(localStorage.getItem('mult')) || 0;
-  var currentCost = parseInt(localStorage.getItem('currentCost')) || 1;
+  var currentCost = parseInt(localStorage.getItem('currentCost')) || 5;
   var idle = parseInt(localStorage.getItem('idle')) || 0;
-  var idleCost = parseInt(localStorage.getItem('idleCost')) || 1;
+  var idleCost = parseInt(localStorage.getItem('idleCost')) || 100;
   var domain = parseInt(localStorage.getItem('domain')) || 0;
-  var domainCost = parseInt(localStorage.getItem('domainCost')) || 1;
+  var domainCost = parseInt(localStorage.getItem('domainCost')) || 1000;
   var god = parseInt(localStorage.getItem('god')) || 0;
-  var godCost = parseInt(localStorage.getItem('godCost')) || 1;
+  var godCost = parseInt(localStorage.getItem('godCost')) || 10000;
   var grandMult = parseInt(localStorage.getItem('grandMult')) || 1;
   var changelog = "I added this changelog, along with changing pricing values.";
   var isShownChangelog = 0;//This value doesn't need to be stored.
@@ -96,10 +96,10 @@ font-size: 200%;
   localStorage.setItem('grandMult', grandMult.toString());
   }
   function buyGod() {
-   if (int >= 10000 * godCost) { 
+   if (int >= godCost) { 
     god +=1;
     grandMult +=1;
-    int = int - (10000 * godCost);
+    int = int - (godCost);
      godCost = Math.round(baseValueGod * (3**god));
      update();
    }
@@ -113,9 +113,9 @@ font-size: 200%;
   saveToLocalStorage();
   } 
   function domainLevel() {
-    if (int >= 1000 * domainCost) {
+    if (int >= domainCost) {
       domain +=1;
-      int = int - (1000 * domainCost);
+      int = int - (domainCost);
       domainCost = Math.round(baseValueDomain * (1.20**domain));
       update();
     }  
@@ -137,9 +137,9 @@ font-size: 200%;
   update();
   }
   function upgrade() {
-  if (int >= 5 * currentCost) {
+  if (int >= currentCost) {
   mult += 1;
-  int = int - (5 * currentCost);
+  int = int - (currentCost);
   currentCost = Math.round(baseValueCurrentCost * (1.20**mult));
   update();
   }
