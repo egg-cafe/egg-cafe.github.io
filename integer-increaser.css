@@ -2,8 +2,8 @@ html, body {
   font-family: 'Cabin', sans-serif;
 }
 button {
-  border-radius: 10px;
-  width: 70%;
+  border-radius: 100px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: 5px;
