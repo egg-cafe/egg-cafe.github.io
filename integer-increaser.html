@@ -90,7 +90,7 @@ font-family: 'Cabin', sans-serif;
     god +=1;
     grandMult +=1;
     int = int - (10000 * godCost);
-     godCost = godCost * (3**god);
+     godCost = Math.round(godCost * (3**god));
      update();
    }
     document.getElementById("godCost").innerHTML = "The cost to bribe God is "+ (10000 * godCost) + " Int.";
@@ -106,7 +106,7 @@ font-family: 'Cabin', sans-serif;
     if (int >= 1000 * domainCost) {
       domain +=1;
       int = int - (1000 * domainCost);
-      domainCost = domainCost * (1.20**domain);
+      domainCost = Math.round(domainCost * (1.20**domain));
       update();
     }  
     document.getElementById("domainCost").innerHTML = "Current cost is " + (1000 * domainCost) + " Int.";
@@ -116,7 +116,7 @@ font-family: 'Cabin', sans-serif;
   if (int >= 100 * idleCost) {
   idle += 1;
   int = int - (100 * idleCost);
-  idleCost = idleCost * (1.20**idle);
+  idleCost = Math.round(idleCost * (1.20**idle));
   update();
   }
   document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * idleCost) + " Int.";
@@ -130,7 +130,7 @@ font-family: 'Cabin', sans-serif;
   if (int >= 5 * currentCost) {
   mult += 1;
   int = int - (5 * currentCost);
-  currentCost = currentCost * (1.20**mult);
+  currentCost = Math.round(currentCost * (1.20**mult));
   update();
   }
   document.getElementById("currentCost").innerHTML = "Current cost is " + (5 * currentCost) + " Int.";
