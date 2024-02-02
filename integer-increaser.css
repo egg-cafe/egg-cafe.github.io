@@ -2,9 +2,9 @@ html, body {
   font-family: 'Cabin', sans-serif;
 }
 button {
-  border-radius: 100px;
+  border-radius: 25px;
   width: 100%;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
   width: 200px;
 }
