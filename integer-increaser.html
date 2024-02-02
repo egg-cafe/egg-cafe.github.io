@@ -123,13 +123,13 @@ font-size: 200%;
     document.getElementById("domainLevel").innerHTML = "You have " + domain + " sorcerers opening domains.";
   } 
   function idleLevel() {
-  if (int >= 100 * Math.round(baseValueIdle * (1.20**idle))) {
+  if (int >= idleCost) {
   idle += 1;
-  int = int - (100 * Math.round(baseValueIdle * (1.20**idle)));
+  int = int - (idleCost);
   idleCost = Math.round(baseValueIdle * (1.20**idle));
   update();
   }
-  document.getElementById("idleCost").innerHTML = "Current cost is " + (100 * Math.round(baseValueIdle * (1.20**idle))) + " Int.";
+  document.getElementById("idleCost").innerHTML = "Current cost is " + idleCost) + " Int.";
   document.getElementById("idleLv").innerHTML = "You have " + idle + " employees";
   }
   function basicClicker() {
