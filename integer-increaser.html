@@ -13,9 +13,6 @@ p {
 font-size: 12px;
 font-family: 'Cabin', sans-serif;
 }
-.otherUp{
-  text-align: right;
-} 
 </style>
 </head>
 <button onclick="basicClicker()">Click to increment</button>
@@ -33,9 +30,9 @@ font-family: 'Cabin', sans-serif;
 <p id="domainCost"></p>
 <p>Yeah we aren't sure how you can just buy that.</p>
 <p id="domainLevel"></p>
-<button onclick="buyGod()" class="otherUp">Bribe God</button>
-<p id = "godCost" class="otherUp"></p>
-<p id = "godLv" class="otherUp"></p> 
+<button onclick="buyGod()">Bribe God</button>
+<p id = "godCost"></p>
+<p id = "godLv"></p> 
 <script>
   var int = parseInt(localStorage.getItem('int')) || 0;
   var mult = parseInt(localStorage.getItem('mult')) || 0;
