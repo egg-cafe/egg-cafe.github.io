@@ -35,7 +35,7 @@ font-family: 'Cabin', sans-serif;
 <button onclick="buyGod()" tabindex="-1">Bribe God</button>
 <p id = "godCost"></p>
 <p id = "godLv"></p> 
-<p id=showChangelog onclick="changelog()">Click to show/hide changelog.</p>
+<p id=showChangelog onclick="changelogReal()">Click to show/hide changelog.</p>
 <script>
   var int = parseInt(localStorage.getItem('int')) || 0;
   var mult = parseInt(localStorage.getItem('mult')) || 0;
@@ -50,7 +50,7 @@ font-family: 'Cabin', sans-serif;
   var changelog = "I added this changelog, along with changing pricing values.";
   var isShownChangelog = 0;//This value doesn't need to be stored.
   setAll();
-  function changelog() {
+  function changelogReal() {
     if (isShownChangelog == 0) {
       isShownChangelog = 1;
       document.getElementById("showChangelog").innerHTML = changelog;
