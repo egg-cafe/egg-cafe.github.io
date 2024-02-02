@@ -107,6 +107,9 @@ font-family: 'Cabin', sans-serif;
       domain +=1;
       int = int - (1000 * domainCost);
       domainCost = Math.round(domainCost * (1.20**domain));
+      if (domain == 1) {
+        domainCost = 1250;
+      )
       update();
     }  
     document.getElementById("domainCost").innerHTML = "Current cost is " + (1000 * domainCost) + " Int.";
