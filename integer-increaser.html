@@ -46,16 +46,16 @@ font-family: 'Cabin', sans-serif;
   var domainCost = parseInt(localStorage.getItem('domainCost')) || 1;
   var god = parseInt(localStorage.getItem('god')) || 0;
   var godCost = parseInt(localStorage.getItem('godCost')) || 1;
-  var grandMult = parseInt(localStorage.getItem('grantMult')) || 1;
+  var grandMult = parseInt(localStorage.getItem('grandMult')) || 1;
   var changelog = "I added this changelog, along with changing pricing values.";
-  const isShownChangelog = false;//This value doesn't need to be stored.
+  var isShownChangelog = 0;//This value doesn't need to be stored.
   setAll();
   function changelog() {
-    if (isShownChangelog == false) {
-      isShownChangelog = true;
+    if (isShownChangelog == 0) {
+      isShownChangelog = 1;
       document.getElementById("showChangelog").innerHTML = changelog;
-    } else if (isShownChangelog == true) {
-      isShownChangelog = false;
+    } else if (isShownChangelog == 1) {
+      isShownChangelog = 0;
       document.getElementById("showChangelog").innerHTML = "Click to show/hide changelog.";
     }  
   }  
