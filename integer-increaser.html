@@ -15,8 +15,9 @@ font-family: 'Cabin', sans-serif;
 }
 </style>
 </head>
-<button onclick="basicClicker()">Click to increment</button>
 <p id="Count"></p>
+<p id="intPerSecond"></p>
+<button onclick="basicClicker()">Click to increment</button>
 <button onclick="upgrade()">Upgrade</button>
 <p id="currentCost"></p>
 <p id="upgrade"></p>
@@ -57,6 +58,7 @@ font-family: 'Cabin', sans-serif;
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
   document.getElementById("godCost").innerHTML = "The cost to bribe God is "+ (10000 * godCost) + " Int.";
   document.getElementById("godLv").innerHTML = "You have bribed God " + god + " times.";
+  document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + ((idle*grandMult)+(domain*3*grandMult)) + " Int/Second.";
   }  
   function saveToLocalStorage() {
   localStorage.setItem('int', int.toString());
@@ -84,6 +86,7 @@ font-family: 'Cabin', sans-serif;
   function update() {
   document.getElementById("Count").innerHTML = (int + " Int.");
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
+  document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + ((idle*grandMult)+(domain*3*grandMult)) + " Int/Second.";
   saveToLocalStorage();
   } 
   function domainLevel() {
@@ -107,7 +110,7 @@ font-family: 'Cabin', sans-serif;
   document.getElementById("idleLv").innerHTML = "You have " + idle + " employees";
   }
   function basicClicker() {
-  int += 1 + mult;
+  int += ((1 + mult)*grandMult);
   update();
   }
   function upgrade() {
@@ -121,8 +124,8 @@ font-family: 'Cabin', sans-serif;
   document.getElementById("upgrade").innerHTML = "Your current upgrade level is " + mult + ".";
   }
   setInterval(() => {
-    int += idle;
-    int += (domain*3);
+    int += (idle*grandMult);
+    int += (domain*3*grandMult);
     update();
   }, 1000);
 </script>
