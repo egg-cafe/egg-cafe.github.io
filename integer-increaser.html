@@ -42,8 +42,8 @@ font-size: 200%;
 <p id = "godCost"></p>
 <p id = "godLv"></p> 
 <button onclick="wasteMoney()" tabindex="-1">Buy a dry cranberry.</button>  
-<p id = "dryCranberryCost"></p>
-<p id = "dryCranberry"></p>
+<p id = "cranberryCost"></p>
+<p id = "cranberryCount"></p>
 <p id=showChangelog onclick="changelogReal()">Click to show/hide changelog.</p>
 <script>
   var int = parseInt(localStorage.getItem('int')) || 0;
@@ -72,6 +72,8 @@ font-size: 200%;
       int = int-dryCranberryCost;
       dryCranberryCost = Math.round(dryCranberryBaseCost * (10));
     }  
+    document.getElementById("cranberryCost").innerHTML = "The cost to buy a dry cranberry is "+ (dryCranberryCost) + " Int.";
+    document.getElementById("cranberryCount").innerHTML = "You have bought " + dryCranberry + " dry Cranberries. Why.";
   }   
   function changelogReal() {
     if (isShownChangelog == 0) {
@@ -81,8 +83,7 @@ font-size: 200%;
       isShownChangelog = 0;
       document.getElementById("showChangelog").innerHTML = "Click to show/hide changelog.";
     } 
-    document.getElementById("cranberryCost").innerHTML = "The cost to bribe God is "+ (dryCranberryCost) + " Int.";
-    document.getElementById("cranberryCount").innerHTML = "You have bought " + dryCranberry + " dry Cranberries. Why.";
+    
   }  
   function setAll() {
   document.getElementById("Count").innerHTML = (int + " Int.");
@@ -97,7 +98,7 @@ font-size: 200%;
   document.getElementById("godCost").innerHTML = "The cost to bribe God is "+ (godCost) + " Int.";
   document.getElementById("godLv").innerHTML = "You have bribed God " + god + " times.";
   document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + ((idle*grandMult)+(domain*3*grandMult)) + " Int/Second.";
-  document.getElementById("cranberryCost").innerHTML = "The cost to bribe God is "+ (dryCranberryCost) + " Int.";
+  document.getElementById("cranberryCost").innerHTML = "The cost to buy a dry cranberry is "+ (dryCranberryCost) + " Int.";
   document.getElementById("cranberryCount").innerHTML = "You have bought " + dryCranberry + " dry Cranberries. Why.";
   }  
   function saveToLocalStorage() {
