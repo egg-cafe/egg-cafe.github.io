@@ -70,10 +70,11 @@ font-size: 200%;
     if (int >= dryCranberryCost) {
       dryCranberry += 1;
       int = int-dryCranberryCost;
-      dryCranberryCost = Math.round(dryCranberryBaseCost * (10));
+      dryCranberryCost = Math.round(dryCranberryBaseCost * (10**dryCranberry));
     }  
     document.getElementById("cranberryCost").innerHTML = "The cost to buy a dry cranberry is "+ (dryCranberryCost) + " Int.";
     document.getElementById("cranberryCount").innerHTML = "You have bought " + dryCranberry + " dry Cranberries. Why.";
+    update();
   }   
   function changelogReal() {
     if (isShownChangelog == 0) {
