@@ -3,6 +3,7 @@ html, body {
   text-align: center;
 }
 button {
+  touch-action: none;
   border-radius: 25px;
   width: 100%;
   text-align: center;
