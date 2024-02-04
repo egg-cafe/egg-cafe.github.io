@@ -1,6 +1,7 @@
 html, body {
   font-family: 'Cabin', sans-serif;
   text-align: center;
+  user-select: none;
 }
 button {
   touch-action: none;
