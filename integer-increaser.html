@@ -124,6 +124,7 @@ font-size: 200%;
   localStorage.setItem('grandMult', grandMult.toString());
   localStorage.setItem('dryCranberry', dryCranberry.toString());
   localStorage.setItem('dryCranberryCost', dryCranberryCost.toString());
+  localStorage.setItem('lastKnownTime'. lastKnownTime.toString());
   //localStorage.setItem I need this to copy paste later.
   }
   function buyGod() {
@@ -185,6 +186,7 @@ font-size: 200%;
   }, 1000);
   function getLastKnownTimePlease() {
     lastKnownTime = Math.round(Date.now() / 1000)
+    update();
   }  
   window.addEventListener('beforeunload', getLastKnownTimePlease());
 </script>
