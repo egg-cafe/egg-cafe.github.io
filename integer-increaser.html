@@ -54,7 +54,7 @@ font-size: 200%;
 </div>
 </div>
 <div class='dangerZone'>
-<button class="reset" onlick="reset()">Reset Everything</button>
+<button class="reset" onlick="reset()" tabindex="-1">Reset Everything</button>
 <p class='carefulIdiot'>This resets everything. No further explanation needed.</p>
 </div>
 <script>
@@ -105,6 +105,7 @@ font-size: 200%;
     dryCranberryCost = 10000000;
     intPerSecond = 0;
     setAll();
+    saveToLocalStorage();
   }  
   function awayInt() {
     if (pageLoadTime > lastKnownTime) {
