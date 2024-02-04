@@ -53,6 +53,10 @@ font-size: 200%;
 <p id = "godLv"></p>
 </div>
 </div>
+<div class='dangerZone'>
+<button class="reset" onlick="reset()">Reset Everything</button>
+<p class='carefulIdiot'>This resets everything. No further explanation needed.</p>
+</div>
 <script>
   var lastKnownTime = parseInt(localStorage.getItem('lastKnownTime')) || Math.round(Date.now() / 1000);
   var pageLoadTime = Math.round(Date.now() / 1000);
@@ -78,6 +82,30 @@ font-size: 200%;
   var intPerSecond = ((idle*grandMult)+(domain*3*grandMult)) || 0;
   setAll();
   awayInt();
+  function reset() {
+    lastKnownTime = Math.round(Date.now() / 1000);
+    pageLoadTime = Math.round(Date.now() / 1000);
+    int = 0;
+    mult = 0;
+    currentCost = 5;
+    idle = 0;
+    idleCost = 100;
+    domain = 0;
+    domainCost = 1000;
+    god = 0;
+    godCost = 10000;
+    grandMult = 1;
+    isShownChangelog = 0;//This value doesn't need to be stored.
+    baseValueIdle = 100;
+    baseValueDomain = 1000;
+    baseValueGod = 10000;
+    baseValueCurrentCost = 5;
+    dryCranberryBaseCost = 10000000;
+    dryCranberry =  0;
+    dryCranberryCost = 10000000;
+    intPerSecond = 0;
+    setAll();
+  }  
   function awayInt() {
     if (pageLoadTime > lastKnownTime) {
       int += Math.round((intPerSecond * (pageLoadTime - lastKnownTime))/2)
