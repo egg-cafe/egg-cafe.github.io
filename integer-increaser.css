@@ -17,3 +17,9 @@ button {
   background: #FF0000;
   color: #FFFFFF;
 }
+.carefulIdiot {
+  color: #FF0000;
+}
+.carefulIdiot:hover {
+  font-size: 20px;
+}
