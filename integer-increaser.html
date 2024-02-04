@@ -21,10 +21,18 @@ font-size: 200%;
 }
 </style>
 </head>
+<div class="supremeDiv">
+<div class="centerStuff">
 <p id="Count" class="intCounter"></p>
 <p id="intPerSecond" class="perSecond"></p>
 <button onclick="basicClicker()" tabindex="-1">Click to increment</button>
 <p></p>
+<button onclick="wasteMoney()" tabindex="-1">Buy a dry cranberry.</button>  
+<p id = "cranberryCost"></p>
+<p id = "cranberryCount"></p>
+<p id=showChangelog onclick="changelogReal()">Click to show/hide changelog.</p>
+</div>  
+<div class="upgradesLeft">
 <button onclick="upgrade()" tabindex="-1" >Upgrade</button>
 <p id="currentCost"></p>
 <p id="upgrade"></p>
@@ -38,13 +46,13 @@ font-size: 200%;
 <p id="domainCost"></p>
 <p>Yeah we aren't sure how you can just buy that.</p>
 <p id="domainLevel"></p>
+</div>
+<div class="epicUpgradesRight">
 <button onclick="buyGod()" tabindex="-1">Bribe God</button>
 <p id = "godCost"></p>
-<p id = "godLv"></p> 
-<button onclick="wasteMoney()" tabindex="-1">Buy a dry cranberry.</button>  
-<p id = "cranberryCost"></p>
-<p id = "cranberryCount"></p>
-<p id=showChangelog onclick="changelogReal()">Click to show/hide changelog.</p>
+<p id = "godLv"></p>
+</div>
+</div>
 <script>
   var lastKnownTime = parseInt(localStorage.getItem('lastKnownTime')) || Math.round(Date.now() / 1000);
   var pageLoadTime = Math.round(Date.now() / 1000);
