@@ -86,7 +86,7 @@ font-size: 200%;
   var dryCranberryBaseCost = 10000000;
   var dryCranberry = parseInt(localStorage.getItem('dryCranberry')) || 0;
   var dryCranberryCost = parseInt(localStorage.getItem('dryCranberryCost')) || 10000000;
-  var intPerSecond = ((idle*grandMult)+(domain*3*grandMult)+(tree*5*grandMult)) || 0;
+  var intPerSecond = ((idle*grandMult)+(domain*3*grandMult)+(tree*7*grandMult)) || 0;
   setAll();
   awayInt();
   saveToLocalStorage();
@@ -211,7 +211,7 @@ font-size: 200%;
   document.getElementById("Count").innerHTML = (int + " Int.");
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
   document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + ((idle*grandMult)+(domain*3*grandMult)+(tree*5*grandMult)) + " Int/Second.";
-  intPerSecond = ((idle*grandMult)+(domain*3*grandMult)+(tree*5*grandMult));//This is important. Control + F to find this in the future.
+  intPerSecond = ((idle*grandMult)+(domain*3*grandMult)+(tree*7*grandMult));//This is important. Control + F to find this in the future.
   saveToLocalStorage();
   } 
   function domainLevel() {
@@ -251,7 +251,7 @@ font-size: 200%;
   setInterval(() => {
     int += (idle*grandMult);
     int += (domain*3*grandMult);
-    int += (tree*5*grandMult);
+    int += (tree*7*grandMult);
     update();
   }, 1000);
   function getLastKnownTimePlease() {
