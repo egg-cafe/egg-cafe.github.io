@@ -27,34 +27,34 @@ font-size: 200%;
 <p id="intPerSecond" class="perSecond"></p>
 <button onclick="basicClicker()" oncontextmenu="return false;" tabindex="-1">Click to increment</button>
 <p></p>
-<button onclick="wasteMoney()" tabindex="-1">Buy a dry cranberry.</button>  
+<button onclick="wasteMoney()" oncontextmenu="return false;" tabindex="-1">Buy a dry cranberry.</button>  
 <p id = "cranberryCost"></p>
 <p id = "cranberryCount"></p>
 <p id=showChangelog onclick="changelogReal()">Click to show/hide changelog.</p>
 </div>  
 <div class="upgradesLeft">
-<button onclick="upgrade()" tabindex="-1" >Upgrade</button>
+<button onclick="upgrade()" oncontextmenu="return false;" tabindex="-1" >Upgrade</button>
 <p id="currentCost"></p>
 <p id="upgrade"></p>
-<button onclick="idleLevel()" tabindex="-1">Buy an indentured servant</button>
+<button onclick="idleLevel()" oncontextmenu="return false;" tabindex="-1">Buy an indentured servant</button>
 <p id="idleCost"></p>
 <p>He is unpaid, and he is happy.</p>
 <p>He also lives in the factory and has an 18-hour work day.</p>
 <p>His 6 hours off he spends working because it's all he knows.</p>
 <p id="idleLv">You have 0 employees.</p>
-<button onclick="domainLevel()" tabindex="-1">Buy a domain expansion.</button>
+<button onclick="domainLevel()" oncontextmenu="return false;" tabindex="-1">Buy a domain expansion.</button>
 <p id="domainCost"></p>
 <p>Yeah we aren't sure how you can just buy that.</p>
 <p id="domainLevel"></p>
 </div>
 <div class="epicUpgradesRight">
-<button onclick="buyGod()" tabindex="-1">Bribe God</button>
+<button onclick="buyGod()" oncontextmenu="return false;" tabindex="-1">Bribe God</button>
 <p id = "godCost"></p>
 <p id = "godLv"></p>
 </div>
 </div>
 <div class='dangerZone'>
-<button class="reset" onclick="reset()" tabindex="-1">Reset Everything</button>
+<button class="reset" onclick="confReset()" oncontextmenu="return false;" tabindex="-1">Reset Everything</button>
 <p class='carefulIdiot'>This resets everything. No further explanation needed.</p>
 </div>
 <script>
@@ -107,7 +107,14 @@ font-size: 200%;
     intPerSecond = 0;
     setAll();
     saveToLocalStorage();
-  }  
+  }
+  function confReset() {
+    if (confirm("Are you sure you want to reset?")) {
+      reset()
+    }else {
+      alert("You decided to not reset!");
+    }
+}
   function awayInt() {
     if (pageLoadTime > lastKnownTime) {
       int += Math.round((intPerSecond * (pageLoadTime - lastKnownTime))/2)
