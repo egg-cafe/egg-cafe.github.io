@@ -175,6 +175,8 @@ font-size: 200%;
   document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + ((idle*grandMult)+(domain*3*grandMult)+(tree*5*grandMult)) + " Int/Second.";//Important
   document.getElementById("cranberryCost").innerHTML = "The cost to buy a dry cranberry is "+ (dryCranberryCost) + " Int.";
   document.getElementById("cranberryCount").innerHTML = "You have bought " + dryCranberry + " dry Cranberries. Why.";
+  document.getElementById("treeCost").innerHTML = "The cost to buy a tree is " + (treeCost) + " Int.";
+  document.getElementById("treeLevel").innerHTML = "You have " + (tree) + " trees.";
   }  
   function saveToLocalStorage() {
   localStorage.setItem('int', int.toString());
@@ -208,7 +210,7 @@ font-size: 200%;
   function update() {
   document.getElementById("Count").innerHTML = (int + " Int.");
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
-  document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + ((idle*grandMult)+(domain*3*grandMult)) + " Int/Second.";
+  document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + ((idle*grandMult)+(domain*3*grandMult)+(tree*5*grandMult)) + " Int/Second.";
   intPerSecond = ((idle*grandMult)+(domain*3*grandMult)+(tree*5*grandMult));//This is important. Control + F to find this in the future.
   saveToLocalStorage();
   } 
