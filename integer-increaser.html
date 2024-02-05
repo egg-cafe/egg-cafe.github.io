@@ -46,6 +46,10 @@ font-size: 200%;
 <p id="domainCost"></p>
 <p>Yeah we aren't sure how you can just buy that.</p>
 <p id="domainLevel"></p>
+<button onclick="treeLevel()" oncontextmenu="return false;" tabindex="-">Buy a tree.</button>
+<p id ="treeCost"></p>
+<p>How does this work, no idea. Grows Int on it's branches or something</p>
+<p id="treeLevel"></p>
 </div>
 <div class="epicUpgradesRight">
 <button onclick="buyGod()" oncontextmenu="return false;" tabindex="-1">Bribe God</button>
@@ -69,17 +73,20 @@ font-size: 200%;
   var domainCost = parseInt(localStorage.getItem('domainCost')) || 1000;
   var god = parseInt(localStorage.getItem('god')) || 0;
   var godCost = parseInt(localStorage.getItem('godCost')) || 10000;
+  var tree = parseInt(localStorage.getItem('tree')) || 0;
+  var treeCost = parseInt(localStorage.getItem('treeCost')) || 5000;
   var grandMult = parseInt(localStorage.getItem('grandMult')) || 1;
-  var changelog = "Added reset button. It works, I think. My browser was being goofy and kept reverting it back, even after clearing site data.";
+  var changelog = "Reset button now has a confirmation. Added Trees.";
   var isShownChangelog = 0;//This value doesn't need to be stored.
   var baseValueIdle = 100;
   var baseValueDomain = 1000;
+  var baseValueTree = 5000;
   var baseValueGod = 10000;
   var baseValueCurrentCost = 5;
   var dryCranberryBaseCost = 10000000;
   var dryCranberry = parseInt(localStorage.getItem('dryCranberry')) || 0;
   var dryCranberryCost = parseInt(localStorage.getItem('dryCranberryCost')) || 10000000;
-  var intPerSecond = ((idle*grandMult)+(domain*3*grandMult)) || 0;
+  var intPerSecond = ((idle*grandMult)+(domain*3*grandMult)+(tree*5*grandMult)) || 0;
   setAll();
   awayInt();
   saveToLocalStorage();
@@ -96,15 +103,18 @@ font-size: 200%;
     god = 0;
     godCost = 10000;
     grandMult = 1;
-    isShownChangelog = 0;//This value doesn't need to be stored.
+    isShownChangelog = 0;
     baseValueIdle = 100;
     baseValueDomain = 1000;
     baseValueGod = 10000;
+    baseValueTree = 5000;
     baseValueCurrentCost = 5;
     dryCranberryBaseCost = 10000000;
     dryCranberry =  0;
     dryCranberryCost = 10000000;
     intPerSecond = 0;
+    tree = 0;
+    treeCost = 5000;
     setAll();
     saveToLocalStorage();
   }
@@ -117,7 +127,7 @@ font-size: 200%;
 }
   function awayInt() {
     if (pageLoadTime > lastKnownTime) {
-      int += Math.round((intPerSecond * (pageLoadTime - lastKnownTime))/2)
+      int += Math.round((intPerSecond * (pageLoadTime - lastKnownTime))/2);
     }  
   }  
   function wasteMoney() {
@@ -130,6 +140,16 @@ font-size: 200%;
     document.getElementById("cranberryCount").innerHTML = "You have bought " + dryCranberry + " dry Cranberries. Why.";
     update();
   }   
+  function treeLevel() {
+    if (int >= treeCost) {
+    tree += 1;
+    int = int-treeCost;
+    treeCost = Math.round(baseValueTree * (1.20**tree));
+    update();
+    }
+    document.getElementById("treeCost").innerHTML = "The cost to buy a tree is " + (treeCost) + " Int.";
+    document.getElementById("treeLevel").innerHTML = "You have " + (tree) + " trees.";
+  }
   function changelogReal() {
     if (isShownChangelog == 0) {
       isShownChangelog = 1;
@@ -152,7 +172,7 @@ font-size: 200%;
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
   document.getElementById("godCost").innerHTML = "The cost to bribe God is "+ (godCost) + " Int.";
   document.getElementById("godLv").innerHTML = "You have bribed God " + god + " times.";
-  document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + ((idle*grandMult)+(domain*3*grandMult)) + " Int/Second.";
+  document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + ((idle*grandMult)+(domain*3*grandMult)+(tree*5*grandMult)) + " Int/Second.";//Important
   document.getElementById("cranberryCost").innerHTML = "The cost to buy a dry cranberry is "+ (dryCranberryCost) + " Int.";
   document.getElementById("cranberryCount").innerHTML = "You have bought " + dryCranberry + " dry Cranberries. Why.";
   }  
@@ -170,6 +190,8 @@ font-size: 200%;
   localStorage.setItem('dryCranberry', dryCranberry.toString());
   localStorage.setItem('dryCranberryCost', dryCranberryCost.toString());
   localStorage.setItem('lastKnownTime', lastKnownTime.toString());
+  localStorage.setItem('tree', tree.toString());
+  localStorage.setItem('treeCost', treeCost.toString());
   //localStorage.setItem I need this to copy paste later.
   }
   function buyGod() {
@@ -187,7 +209,7 @@ font-size: 200%;
   document.getElementById("Count").innerHTML = (int + " Int.");
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
   document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + ((idle*grandMult)+(domain*3*grandMult)) + " Int/Second.";
-  intPerSecond = ((idle*grandMult)+(domain*3*grandMult));//This is important. Control + F to find this in the future.
+  intPerSecond = ((idle*grandMult)+(domain*3*grandMult)+(tree*5*grandMult));//This is important. Control + F to find this in the future.
   saveToLocalStorage();
   } 
   function domainLevel() {
@@ -227,6 +249,7 @@ font-size: 200%;
   setInterval(() => {
     int += (idle*grandMult);
     int += (domain*3*grandMult);
+    int += (tree*5*grandMult);
     update();
   }, 1000);
   function getLastKnownTimePlease() {
