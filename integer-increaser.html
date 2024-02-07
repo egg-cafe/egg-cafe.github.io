@@ -97,7 +97,7 @@ font-size: 200%;
   var dryCranberryBaseCost = 10000000;
   var dryCranberry = parseInt(localStorage.getItem('dryCranberry')) || 0;
   var dryCranberryCost = parseInt(localStorage.getItem('dryCranberryCost')) || 10000000;
-  var intPerSecond = ((idle*grandMult)+(domain*3*grandMult)+(tree*7*grandMult)) || 0;
+  var intPerSecond = ((idle*grandMult)+(domain*3*grandMult)+(tree*7*grandMult)) || 0;//I really need to use this value more often
   setAll();
   awayInt();
   saveToLocalStorage();
