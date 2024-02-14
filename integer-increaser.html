@@ -62,12 +62,14 @@ font-size: 200%;
 <button onclick="upgrade()" oncontextmenu="return false;" tabindex="-1" >Upgrade</button>
 <p id="currentCost"></p>
 <p id="upgrade"></p>
-<button onclick="idleLevel()" oncontextmenu="return false;" tabindex="-1">Buy an indentured servant</button>
+<button onclick="idleLevel()" oncontextmenu="return false;" tabindex="-1">Buy an indentured servant</button><button onclick="upgradeUpgrade()" oncontextmenu="return false;" tabindex="-1">Better Conditions</button>
 <p id="idleCost"></p>
 <p>He is unpaid, and he is happy.</p>
 <p>He also lives in the factory and has an 18-hour work day.</p>
 <p>His 6 hours off he spends working because it's all he knows.</p>
 <p id="idleLv">You have 0 employees.</p>
+<p id="upgradeIdleCost"></p>
+<p id="upgradeIdle"></p>
 <button onclick="domainLevel()" oncontextmenu="return false;" tabindex="-1">Buy a domain expansion.</button>
 <p id="domainCost"></p>
 <p>Yeah we aren't sure how you can just buy that.</p>
@@ -114,11 +116,26 @@ font-size: 200%;
   var dryCranberryBaseCost = 10000000;
   var dryCranberry = parseInt(localStorage.getItem('dryCranberry')) || 0;
   var dryCranberryCost = parseInt(localStorage.getItem('dryCranberryCost')) || 10000000;
-  var intPerSecond = ((idle*grandMult)+(domain*3*grandMult)+(tree*7*grandMult)) || 0;//I really need to use this value more often
+  var intPerSecond = ((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult)+(tree*7*grandMult)) || 0;//I really need to use this value more often
   var health = parseInt(localStorage.getItem('health')) || 1;
+  var upgradeIdle = parseInt(localStorage.getItem('upgradeIdle')) || 0;
+  var upgradeIdleUpgradePercent = parseInt(localStorage.getItem('upgradeIdleUpgradePercent')) || 1;
+  var upgradeIdleCost = parseInt(localStorage.getItem('upgradeIdleCost')) || 10000;
+  var upgradeIdleBaseCost = parseInt(localStorage.getItem('upgradeIdleCost')) || 10000;
   setAll();
   awayInt();
   saveToLocalStorage();
+  function upgradeUpgrade {
+    if (int >= upgradeIdleCost) {
+    upgradeIdle += 1;
+    upgradeIdleUpgradePercent += 0.10;
+    int = int-upgradeIdleCost;
+    upgradeIdleCost = Math.round(upgradeIdleBaseCost * (1.30**upgradeIdleCost));
+    update();
+    }
+    document.getElementById("upgradeCost").innerHTML = "The cost to upgrade your servant's living conditions is " + (upgradeIdleCost) + " Int.";
+    document.getElementById("treeLevel").innerHTML = "You have upgraded his living condition " + (upgradeIdle) + " times.";
+  }  
   function reset() {
     lastKnownTime = Math.round(Date.now() / 1000);
     pageLoadTime = Math.round(Date.now() / 1000);
@@ -144,6 +161,11 @@ font-size: 200%;
     intPerSecond = 0;
     tree = 0;
     treeCost = 5000;
+    health = 1;
+    upgradeIdle = 0;
+    upgradeIdleCost = 10000;
+    upgradeIdleBaseCost = 10000;
+    upgradeIdleUpgradePercent = 1;
     setAll();
     saveToLocalStorage();
   }
@@ -214,6 +236,8 @@ font-size: 200%;
   document.getElementById("cranberryCount").innerHTML = "You have bought " + dryCranberry + " dry Cranberries. Why.";
   document.getElementById("treeCost").innerHTML = "The cost to buy a tree is " + (treeCost) + " Int.";
   document.getElementById("treeLevel").innerHTML = "You have " + (tree) + " trees.";
+  document.getElementById("upgradeCost").innerHTML = "The cost to upgrade your servant's living conditions is " + (upgradeIdleCost) + " Int.";
+  document.getElementById("treeLevel").innerHTML = "You have upgraded his living condition " + (upgradeIdle) + " times.";
   }  
   function saveToLocalStorage() {
   localStorage.setItem('int', int.toString());
@@ -232,6 +256,9 @@ font-size: 200%;
   localStorage.setItem('tree', tree.toString());
   localStorage.setItem('treeCost', treeCost.toString());
   localStorage.setItem('health', health.toString());
+  localStorage.setItem('upgradeIdle', .toString());
+  localStorage.setItem('upgradeIdleCost', .toString());
+  localStorage.setItem('upgradeIdleUpgradePercent', .toString());
   //localStorage.setItem I need this to copy paste later.
   }
   function buyGod() {
@@ -249,7 +276,7 @@ font-size: 200%;
   document.getElementById("Count").innerHTML = (int + " Int.");
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
   document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + intPerSecond + " Int/Second.";
-  intPerSecond = ((idle*grandMult)+(domain*3*grandMult)+(tree*7*grandMult));//This is important. Control + F to find this in the future.
+  intPerSecond = ((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult)+(tree*7*grandMult));//This is important. Control + F to find this in the future.
   saveToLocalStorage();
   } 
   function domainLevel() {
@@ -287,7 +314,7 @@ font-size: 200%;
   document.getElementById("upgrade").innerHTML = "Your current upgrade level is " + mult + ".";
   }
   setInterval(() => {
-    int += (idle*grandMult);
+    int += (idle*grandMult*upgradeIdleUpgradePercent);
     int += (domain*3*grandMult);
     int += (tree*7*grandMult);
     update();
