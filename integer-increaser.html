@@ -116,7 +116,7 @@ font-size: 200%;
   var dryCranberryBaseCost = 10000000;
   var dryCranberry = parseInt(localStorage.getItem('dryCranberry')) || 0;
   var dryCranberryCost = parseInt(localStorage.getItem('dryCranberryCost')) || 10000000;
-  var intPerSecond = ((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult)+(tree*7*grandMult)) || 0;//I really need to use this value more often
+  var intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult)+(tree*7*grandMult))) || 0;//I really need to use this value more often
   var health = parseInt(localStorage.getItem('health')) || 1;
   var upgradeIdle = parseInt(localStorage.getItem('upgradeIdle')) || 0;
   var upgradeIdleUpgradePercent = parseInt(localStorage.getItem('upgradeIdleUpgradePercent')) || 1;
@@ -130,11 +130,11 @@ font-size: 200%;
     upgradeIdle += 1;
     upgradeIdleUpgradePercent += 0.10;
     int = int-upgradeIdleCost;
-    upgradeIdleCost = Math.round(upgradeIdleBaseCost * (1.30**upgradeIdleCost));
+    upgradeIdleCost = Math.round(upgradeIdleBaseCost * (1.30**upgradeIdle));
     update();
     }
     document.getElementById("upgradeCost").innerHTML = "The cost to upgrade your servant's living conditions is " + (upgradeIdleCost) + " Int.";
-    document.getElementById("treeLevel").innerHTML = "You have upgraded his living condition " + (upgradeIdle) + " times.";
+    document.getElementById("upgradeIdle").innerHTML = "You have upgraded his living condition " + (upgradeIdle) + " times.";
   }  
   function reset() {
     lastKnownTime = Math.round(Date.now() / 1000);
@@ -220,7 +220,7 @@ font-size: 200%;
     } 
   }  
   function setAll() {
-  document.getElementById("Count").innerHTML = (int + " Int.");
+  document.getElementById("Count").innerHTML = (Math.round(int) + " Int.");
   document.getElementById("currentCost").innerHTML = "Current Cost is " + (currentCost) + " Int.";
   document.getElementById("upgrade").innerHTML = "Your current upgrade level is " + mult + ".";
   document.getElementById("idleCost").innerHTML = "Current cost is " + (idleCost) + " Int.";
@@ -273,10 +273,10 @@ font-size: 200%;
     document.getElementById("godLv").innerHTML = "You have bribed God " + god + " times.";
   }  
   function update() {
-  document.getElementById("Count").innerHTML = (int + " Int.");
+  document.getElementById("Count").innerHTML = (Math.round(int) + " Int.");
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
   document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + intPerSecond + " Int/Second.";
-  intPerSecond = ((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult)+(tree*7*grandMult));//This is important. Control + F to find this in the future.
+  intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult)+(tree*7*grandMult)));//This is important. Control + F to find this in the future.
   saveToLocalStorage();
   } 
   function domainLevel() {
@@ -314,9 +314,7 @@ font-size: 200%;
   document.getElementById("upgrade").innerHTML = "Your current upgrade level is " + mult + ".";
   }
   setInterval(() => {
-    int += (idle*grandMult*upgradeIdleUpgradePercent);
-    int += (domain*3*grandMult);
-    int += (tree*7*grandMult);
+    int += intPerSecond;
     update();
   }, 1000);
   function getLastKnownTimePlease() {
