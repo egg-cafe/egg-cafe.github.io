@@ -48,6 +48,7 @@ font-size: 200%;
 </head>
 <div class="supremeDiv">
 <div class="centerStuff">
+<button onclick="tempReset()">This button will dissapear when not needed. Currently it resets the upgrade to upgrade, (the one that probably has a cost of infinity.) There is no confirmation.</button>
 <p id="Count" class="intCounter"></p>
 <p id="intPerSecond" class="perSecond"></p>
 <button onclick="basicClicker()" oncontextmenu="return false;" tabindex="-1">Click to increment</button>
@@ -125,6 +126,13 @@ font-size: 200%;
   setAll();
   awayInt();
   saveToLocalStorage();
+  function tempReset() {
+    upgradeIdle = 0;
+    upgradeIdleCost = 10000;
+    upgradeIdleBaseCost = 10000;
+    upgradeIdleUpgradePercent = 1;
+    saveToLocalStorage();
+  }  
   function upgradeUpgrade() {
     if (int >= upgradeIdleCost) {
     upgradeIdle += 1;
