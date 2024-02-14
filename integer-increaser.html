@@ -18,7 +18,7 @@
             }
         }
     }, true);
-</script> <!-- Stop holding enter, fuck you.-->
+</script> <!-- Stop holding enter, fuck you. If anyone is looking at this, please help me fix this, the bug is that if you click the increment button, and then hold enter, it runs the function is if you were clicking it really, really fast. I know it's possible to prevent this, or at least rate limit it, as games like cookie clicker manage to do this somehow.-->
 <style>
 p {
 font-size: 75%;
@@ -29,6 +29,13 @@ font-size: 320%;
 }
 .perSecond {
 font-size: 200%;
+}
+.reviews {
+        -webkit-transition: color 1s; /* For Safari 3.0 to 6.0 */
+        transition: color 1s; /* For modern browsers */
+}
+.reviews:hover {
+        color: #ff0000;
 }
 </style>
 </head>
@@ -42,6 +49,7 @@ font-size: 200%;
 <p id = "cranberryCost"></p>
 <p id = "cranberryCount"></p>
 <p id=showChangelog onclick="changelogReal()">Click to show/hide changelog.</p>
+<p id=showReviews onclick="reviewReal()" class="reviews">Click to show/hide our amazing reviews.</p>
 </div>  
 <div class="upgradesLeft">
 <button onclick="upgrade()" oncontextmenu="return false;" tabindex="-1" >Upgrade</button>
@@ -89,6 +97,8 @@ font-size: 200%;
   var grandMult = parseInt(localStorage.getItem('grandMult')) || 1;
   var changelog = "Reset button now has a confirmation. Added Trees.";
   var isShownChangelog = 0;//This value doesn't need to be stored.
+  var isShownReviews = 0;
+  var amazingReviewsFrfr = "10/10 best clicker i've played in years - bryonnvr";
   var baseValueIdle = 100;
   var baseValueDomain = 1000;
   var baseValueTree = 5000;
@@ -170,7 +180,15 @@ font-size: 200%;
       isShownChangelog = 0;
       document.getElementById("showChangelog").innerHTML = "Click to show/hide changelog.";
     } 
-    
+  }  
+  function reviewReal() {
+    if (isShownReviews == 0) {
+      isShownReviews = 1;
+      document.getElementById("showReviews").innerHTML = amazingReviewsFrfr;
+    } else if (isShownReviews == 1) {
+      isShownReviews = 0;
+      document.getElementById("showReviews").innerHTML = "Click to show/hide changelog.";
+    } 
   }  
   function setAll() {
   document.getElementById("Count").innerHTML = (int + " Int.");
