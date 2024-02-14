@@ -31,11 +31,18 @@ font-size: 320%;
 font-size: 200%;
 }
 .reviews {
-        -webkit-transition: color 1s; /* For Safari 3.0 to 6.0 */
-        transition: color 1s; /* For modern browsers */
+        color: black;
+}
+@keyframes colorReal {
+  0%   {color: red;}
+  33%  {color: blue;}
+  66% {color: yellow;}
+  100% {color: red;}
 }
 .reviews:hover {
-        color: #ff0000;
+        animation-name: colorReal;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;   
 }
 </style>
 </head>
