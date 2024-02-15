@@ -124,11 +124,11 @@ font-size: 200%;
   var dryCranberryCost = parseInt(localStorage.getItem('dryCranberryCost')) || 10000000;
   var health = parseInt(localStorage.getItem('health')) || 1;
   var upgradeIdle = parseInt(localStorage.getItem('upgradeIdle')) || 0;
-  var upgradeIdleUpgradePercent = parseInt(localStorage.getItem('upgradeIdleUpgradePercent')) || 1;
+  var upgradeIdleUpgradePercent = parseFloat(localStorage.getItem('upgradeIdleUpgradePercent')) || 1;
   var upgradeIdleCost = parseInt(localStorage.getItem('upgradeIdleCost')) || 10000;
   var upgradeIdleBaseCost = 10000;
   var upgradeDomain = parseInt(localStorage.getItem('upgradeDomain')) || 0;
-  var upgradeDomainUpgradePercent = parseInt(localStorage.getItem('upgradeDomainUpgradePercent')) || 1;
+  var upgradeDomainUpgradePercent = parseFloat(localStorage.getItem('upgradeDomainUpgradePercent')) || 1;
   var upgradeDomainCost = parseInt(localStorage.getItem('upgradeDomainCost')) || 100000;
   var upgradeDomainBaseCost = 100000;
   var intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult))) || 0;//I really need to use this value more often
