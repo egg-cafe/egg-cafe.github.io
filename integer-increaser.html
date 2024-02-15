@@ -305,17 +305,6 @@ font-size: 200%;
     document.getElementById("domainCost").innerHTML = "Current cost is " + (domainCost) + " Int.";
     document.getElementById("domainLevel").innerHTML = "You have " + domain + " sorcerers opening domains.";
   }
-  function upgradeDomain() {
-    if (int >= upgradeDomainCost) {
-      upgradeDomain +=1;
-      upgradeDomainUpgradePercent += 0.10;
-      int = int - (upgradeDomainCost);
-      upgradeDomainCost = Math.round(upgradeDomainBaseCost * (1.30**upgradeDomain));
-      update();
-    }  
-    document.getElementById("domainUpgradeCost").innerHTML = "Current cost to upgrade the range is " + (upgradeDomainCost) + " Int.";
-    document.getElementById("domainLevel").innerHTML = "You have increased the range " + upgradeDomain + " times.";
-  } 
   function idleLevel() {
   if (int >= idleCost) {
   idle += 1;
@@ -348,6 +337,17 @@ font-size: 200%;
     lastKnownTime = Math.round(Date.now() / 1000)
     update();
   }  
+  function upgradeDomain() {
+    if (int >= upgradeDomainCost) {
+      upgradeDomain +=1;
+      upgradeDomainUpgradePercent += 0.10;
+      int = int - (upgradeDomainCost);
+      upgradeDomainCost = Math.round(upgradeDomainBaseCost * (1.30**upgradeDomain));
+      update();
+    }  
+    document.getElementById("domainUpgradeCost").innerHTML = "Current cost to upgrade the range is " + (upgradeDomainCost) + " Int.";
+    document.getElementById("domainLevel").innerHTML = "You have increased the range " + upgradeDomain + " times.";
+  } 
   window.addEventListener('beforeunload', getLastKnownTimePlease());
 </script>
 
