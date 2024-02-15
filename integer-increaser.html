@@ -51,7 +51,6 @@ font-size: 200%;
 </head>
 <div class="supremeDiv">
 <div class="centerStuff">
-<button onclick="tempReset()">This button will dissapear when not needed. Currently it resets the upgrade to upgrade, (the one that probably has a cost of infinity.) There is no confirmation.</button>
 <p id="Count" class="intCounter"></p>
 <p id="intPerSecond" class="perSecond"></p>
 <button onclick="basicClicker()" oncontextmenu="return false;" tabindex="-1">Click to increment</button>
@@ -287,8 +286,8 @@ font-size: 200%;
   function update() {
   document.getElementById("Count").innerHTML = (Math.round(int) + " Int.");
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
-  document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + intPerSecond + " Int/Second.";
   intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult)+(tree*7*grandMult)));//This is important. Control + F to find this in the future.
+  document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + intPerSecond + " Int/Second.";
   saveToLocalStorage();
   } 
   function domainLevel() {
