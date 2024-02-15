@@ -14,7 +14,7 @@
 <script type="text/javascript">
     window.addEventListener('keydown',function(e) {
         if (e.keyIdentifier=='U+000A' || e.keyIdentifier=='Enter' || e.keyCode==13) {
-            if (e.target.nodeName=='INPUT' && e.target.type=='text') {
+            if (e.target.nodeName=='INPUT' || e.target.type=='text') {
                 e.preventDefault();
 
                 return false;
@@ -73,10 +73,13 @@ font-size: 200%;
 <p id="idleLv">You have 0 employees.</p>
 <p id="upgradeCost"></p>
 <p id="upgradeIdle"></p>
-<button onclick="domainLevel()" oncontextmenu="return false;" tabindex="-1">Buy a domain expansion.</button>
+<button onclick="domainLevel()" oncontextmenu="return false;" tabindex="-1">Buy a domain expansion.</button><button onclick="upgradeDomain()" oncontextmenu="return false;" tabindex="-1">Upgrade the range.</button>
 <p id="domainCost"></p>
 <p>Yeah we aren't sure how you can just buy that.</p>
 <p id="domainLevel"></p>
+<p id="domainUpgradeCost"></p>
+<p>Upgrade the range of the domain.</p>
+<p id = domainUpgradeLevel></p>
 <button onclick="treeLevel()" oncontextmenu="return false;" tabindex="-">Buy a tree.</button>
 <p id ="treeCost"></p>
 <p>How does this work, no idea. Grows Int on it's branches or something</p>
@@ -123,19 +126,15 @@ font-size: 200%;
   var upgradeIdle = parseInt(localStorage.getItem('upgradeIdle')) || 0;
   var upgradeIdleUpgradePercent = parseInt(localStorage.getItem('upgradeIdleUpgradePercent')) || 1;
   var upgradeIdleCost = parseInt(localStorage.getItem('upgradeIdleCost')) || 10000;
-  var upgradeIdleBaseCost = parseInt(localStorage.getItem('upgradeIdleCost')) || 10000;
-  var intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult)+(tree*7*grandMult))) || 0;//I really need to use this value more often
+  var upgradeIdleBaseCost = 10000;
+  var upgradeDomain = parseInt(localStorage.getItem('upgradeDomain')) || 0;
+  var upgradeDomainUpgradePercent = parseInt(localStorage.getItem('upgradeDomainUpgradePercent')) || 1;
+  var upgradeDomainCost = parseInt(localStorage.getItem('upgradeDomainCost')) || 100000;
+  var upgradeDomainBaseCost = 100000;
+  var intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult))) || 0;//I really need to use this value more often
   setAll();
   awayInt();
   saveToLocalStorage();
-  function tempReset() {
-    upgradeIdle = 0;
-    upgradeIdleCost = 10000;
-    upgradeIdleBaseCost = 10000;
-    upgradeIdleUpgradePercent = 1;
-    setAll();
-    saveToLocalStorage();
-  }  
   function upgradeUpgrade() {
     if (int >= upgradeIdleCost) {
     upgradeIdle += 1;
@@ -177,6 +176,10 @@ font-size: 200%;
     upgradeIdleCost = 10000;
     upgradeIdleBaseCost = 10000;
     upgradeIdleUpgradePercent = 1;
+    upgradeDomain = 0;
+    upgradeDomainUpgradePercent = 1;
+    upgradeDomainCost = 100000;
+    upgradeDomainBaseCost = 100000;
     setAll();
     saveToLocalStorage();
   }
@@ -249,6 +252,8 @@ font-size: 200%;
   document.getElementById("treeLevel").innerHTML = "You have " + (tree) + " trees.";
   document.getElementById("upgradeCost").innerHTML = "The cost to upgrade your servant's living conditions is " + (upgradeIdleCost) + " Int.";
   document.getElementById("upgradeIdle").innerHTML = "You have upgraded his living condition " + (upgradeIdle) + " times.";
+  document.getElementById("domainUpgradeCost").innerHTML = "Current cost to upgrade the range is " + (upgradeDomainCost) + " Int.";
+  document.getElementById("domainLevel").innerHTML = "You have increased the range " + upgradeDomain + " times.";
   }  
   function saveToLocalStorage() {
   localStorage.setItem('int', int.toString());
@@ -299,6 +304,17 @@ font-size: 200%;
     }  
     document.getElementById("domainCost").innerHTML = "Current cost is " + (domainCost) + " Int.";
     document.getElementById("domainLevel").innerHTML = "You have " + domain + " sorcerers opening domains.";
+  }
+  function upgradeDomain() {
+    if (int >= upgradeDomainCost) {
+      upgradeDomain +=1;
+      upgradeDomainUpgradePercent += 0.10;
+      int = int - (upgradeDomainCost);
+      upgradeDomainCost = Math.round(upgradeDomainBaseCost * (1.30**upgradeDomain));
+      update();
+    }  
+    document.getElementById("domainUpgradeCost").innerHTML = "Current cost to upgrade the range is " + (upgradeDomainCost) + " Int.";
+    document.getElementById("domainLevel").innerHTML = "You have increased the range " + upgradeDomain + " times.";
   } 
   function idleLevel() {
   if (int >= idleCost) {
