@@ -80,10 +80,12 @@ font-size: 200%;
 <p id="domainUpgradeCost"></p>
 <p>Upgrade the range of the domain.</p>
 <p id = domainUpgradeLevel></p>
-<button onclick="treeLevel()" oncontextmenu="return false;" tabindex="-">Buy a tree.</button>
+<button onclick="treeLevel()" oncontextmenu="return false;" tabindex="-">Buy a tree.</button><button onclick="treeUpgradeReal()" oncontextmenu="return false;" tabindex="-">Buy fertilizer.</button>
 <p id ="treeCost"></p>
 <p>How does this work, no idea. Grows Int on it's branches or something</p>
 <p id="treeLevel"></p>
+<p id="treeUpgradeCost"></p>
+<p id="treeUpgradeLevel"></p>
 </div>
 <div class="epicUpgradesRight">
 <button onclick="buyGod()" oncontextmenu="return false;" tabindex="-1">Bribe God</button>
@@ -131,7 +133,11 @@ font-size: 200%;
   var upgradeDomainUpgradePercent = parseFloat(localStorage.getItem('upgradeDomainUpgradePercent')) || 1;
   var upgradeDomainCost = parseInt(localStorage.getItem('upgradeDomainCost')) || 100000;
   var upgradeDomainBaseCost = 100000;
-  var intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult))) || 0;//I really need to use this value more often
+  var upgradeTree = parseInt(localStorage.getItem('upgradeTree')) || 0;
+  var upgradeTreeUpgradePercent = parseFloat(localStorage.getItem('upgradeTreeUpgradePercent')) || 1;
+  var upgradeTreeCost = parseInt(localStorage.getItem('upgradeTreeCost')) || 500000
+  var upgradeTreeBaseCost = 500000;
+  var intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult*upgradeTreeUpgradePercent))) || 0;//I really need to use this value more often
   setAll();
   awayInt();
   saveToLocalStorage();
@@ -180,6 +186,10 @@ font-size: 200%;
     upgradeDomainUpgradePercent = 1;
     upgradeDomainCost = 100000;
     upgradeDomainBaseCost = 100000;
+    upgradeTree = 0;
+    upgradeTreeUpgradePercent = 1;
+    upgradeTreeCost = 500000;
+    upgradeTreeBaseCost = 500000;
     setAll();
     saveToLocalStorage();
   }
@@ -254,6 +264,8 @@ font-size: 200%;
   document.getElementById("upgradeIdle").innerHTML = "You have upgraded his living condition " + (upgradeIdle) + " times.";
   document.getElementById("domainUpgradeCost").innerHTML = "Current cost to upgrade the range is " + (upgradeDomainCost) + " Int.";
   document.getElementById("domainUpgradeLevel").innerHTML = "You have increased the range " + upgradeDomain + " times.";
+  document.getElementById("treeUpgradeCost").innerHTML = "Current cost of fertilizer is " + (upgradeTreeCost) + " Int.";
+  document.getElementById("treeUpgradeLevel").innerHTML = "You have bought " + upgradeTree + " bags of fertilizer.";
   }  
   function saveToLocalStorage() {
   localStorage.setItem('int', int.toString());
@@ -278,6 +290,9 @@ font-size: 200%;
   localStorage.setItem('upgradeDomain', upgradeDomain.toString());
   localStorage.setItem('upgradeDomainCost', upgradeDomainCost.toString());
   localStorage.setItem('upgradeDomainUpgradePercent', upgradeDomainUpgradePercent.toString());
+  localStorage.setItem('upgradeTree', upgradeTree.toString());
+  localStorage.setItem('upgradeTreeCost', upgradeTreeCost.toString());
+  localStorage.setItem('upgradeTreeUpgradePercent', upgradeTreeUpgradePercent.toString());
   //localStorage.setItem I need this to copy paste later.
   }
   function buyGod() {
@@ -294,7 +309,7 @@ font-size: 200%;
   function update() {
   document.getElementById("Count").innerHTML = (Math.round(int) + " Int.");
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
-  intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult)));//This is important. Control + F to find this in the future.
+  intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult*upgradeTreeUpgradePercent)));//This is important. Control + F to find this in the future.
   document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + intPerSecond + " Int/Second.";
   saveToLocalStorage();
   } 
@@ -351,6 +366,17 @@ font-size: 200%;
     document.getElementById("domainUpgradeCost").innerHTML = "Current cost to upgrade the range is " + (upgradeDomainCost) + " Int.";
     document.getElementById("domainUpgradeLevel").innerHTML = "You have increased the range " + upgradeDomain + " times.";
   } 
+   function treeUpgradeReal() {
+    if (int >= upgradeTreeCost) {
+      upgradeTree +=1;
+      upgradeTreeUpgradePercent += 0.10;
+      int = int - (upgradeTreeCost);
+      upgradeTreeCost = Math.round(upgradeTreeBaseCost * (1.30**upgradeTree));
+      update();
+    }
+     document.getElementById("treeUpgradeCost").innerHTML = "Current cost of fertilizer is " + (upgradeTreeCost) + " Int.";
+     document.getElementById("treeUpgradeLevel").innerHTML = "You have bought " + upgradeTree + " bags of fertilizer.";
+  }  
   window.addEventListener('beforeunload', getLastKnownTimePlease());
 </script>
 
