@@ -80,12 +80,19 @@ font-size: 200%;
 <p id="domainUpgradeCost"></p>
 <p>Upgrade the range of the domain.</p>
 <p id = domainUpgradeLevel></p>
-<button onclick="treeLevel()" oncontextmenu="return false;" tabindex="-">Buy a tree.</button><button onclick="treeUpgradeReal()" oncontextmenu="return false;" tabindex="-">Buy fertilizer.</button>
+<button onclick="treeLevel()" oncontextmenu="return false;" tabindex="-1">Buy a tree.</button><button onclick="treeUpgradeReal()" oncontextmenu="return false;" tabindex="-1">Buy fertilizer.</button>
 <p id ="treeCost"></p>
 <p>How does this work, no idea. Grows Int on it's branches or something</p>
 <p id="treeLevel"></p>
 <p id="treeUpgradeCost"></p>
 <p id="treeUpgradeLevel"></p>
+<button onclick="shrimpLevel()" oncontextmenu="return false;" tabindex="-1">Buy shrimp fried rice.</button><button onclick="shrimpUpgradeReal()" oncontextmenu="return false;" tabindex="-1">Buy the shrimp who fried the rice.</button>
+<p>There's no way a shrimp fried this rice!</p>
+<p id="shrimpLevel"></p>
+<p id="shrimpCost"></p>
+<p><strong>The shrimp in question.</strong></p>
+<p id="shrimpUpgradeLevel"></p>
+<p id="shrimpUpgradeCost"></p>
 </div>
 <div class="epicUpgradesRight">
 <button onclick="buyGod()" oncontextmenu="return false;" tabindex="-1">Bribe God</button>
@@ -137,7 +144,14 @@ font-size: 200%;
   var upgradeTreeUpgradePercent = parseFloat(localStorage.getItem('upgradeTreeUpgradePercent')) || 1;
   var upgradeTreeCost = parseInt(localStorage.getItem('upgradeTreeCost')) || 500000
   var upgradeTreeBaseCost = 500000;
-  var intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult*upgradeTreeUpgradePercent))) || 0;//I really need to use this value more often
+  var shrimp = parseInt(localStorage.getItem('shrimp')) || 0;
+  var shrimpCost = parseInt(localStorage.getItem('shrimpCost)) || 15000;
+  var baseValueShrimp = 15000;
+  var upgradeShrimpUpgradePercent = parseFloat(localStorage.getItem('upgradeShrimpUpgradePercent')) || 1;
+  var upgradeShrimp = parseInt(localStorage.getItem('upgradeShrimp')) || 0;
+  var upgradeShrimpCost = parseInt(localStorage.getItem('upgradeShrimpCost')) || 1500000;
+  var upgradeShrimpBaseCost = 500000;
+  var intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult*upgradeTreeUpgradePercent)+(shrimp*15*grandMult*upgradeShrimpUpgradePercent))) || 0;//I really need to use this value more often
   setAll();
   awayInt();
   saveToLocalStorage();
@@ -190,6 +204,13 @@ font-size: 200%;
     upgradeTreeUpgradePercent = 1;
     upgradeTreeCost = 500000;
     upgradeTreeBaseCost = 500000;
+    shrimp = 0;
+    shrimpCost = 15000;
+    baseValueShrimp = 15000;
+    upgradeShrimpUpgradePercent = 1;
+    upgradeShrimp = 0;
+    upgradeShrimpCost = 1500000;
+    upgradeShrimpBaseCost = 500000;
     setAll();
     saveToLocalStorage();
   }
@@ -266,6 +287,10 @@ font-size: 200%;
   document.getElementById("domainUpgradeLevel").innerHTML = "You have increased the range " + upgradeDomain + " times.";
   document.getElementById("treeUpgradeCost").innerHTML = "Current cost of fertilizer is " + (upgradeTreeCost) + " Int.";
   document.getElementById("treeUpgradeLevel").innerHTML = "You have bought " + upgradeTree + " bags of fertilizer.";
+  document.getElementById("shrimpCost").innerHTML = "Current cost is " + (shrimpCost) + " Int.";
+  document.getElementById("shrimpLevel").innerHTML = "You have " + shrimp + " bowls of shrimp fried rice.";
+  document.getElementById("shrimpUpgradeCost").innerHTML = "Current cost of the shrimp in question is " + (upgradeShrimpCost) + " Int.";
+  document.getElementById("shrimpUpgradeLevel").innerHTML = "You have bought the shrimp in question " + upgradeShrimp + " times.";
   }  
   function saveToLocalStorage() {
   localStorage.setItem('int', int.toString());
@@ -309,7 +334,7 @@ font-size: 200%;
   function update() {
   document.getElementById("Count").innerHTML = (Math.round(int) + " Int.");
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
-  intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult*upgradeTreeUpgradePercent)));//This is important. Control + F to find this in the future.
+  intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult*upgradeTreeUpgradePercent)+(shrimp*15*grandMult*upgradeShrimpUpgradePercent)));//This is important. Control + F to find this in the future.
   document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + intPerSecond + " Int/Second.";
   saveToLocalStorage();
   } 
@@ -376,6 +401,27 @@ font-size: 200%;
     }
      document.getElementById("treeUpgradeCost").innerHTML = "Current cost of fertilizer is " + (upgradeTreeCost) + " Int.";
      document.getElementById("treeUpgradeLevel").innerHTML = "You have bought " + upgradeTree + " bags of fertilizer.";
+  }  
+  function shrimpLevel() {
+    if (int >= shrimpCost) {
+      shrimp +=1;
+      int = int - (shrimpCost);
+      shrimpCost = Math.round(baseValueShrimp * (1.20**shrimp));
+      update();
+    }  
+    document.getElementById("shrimpCost").innerHTML = "Current cost is " + (shrimpCost) + " Int.";
+    document.getElementById("shrimpLevel").innerHTML = "You have " + shrimp + " bowls of shrimp fried rice.";
+  }
+  function shrimpUpgradeReal() {
+    if (int >= upgradeShrimpCost) {
+      upgradeShrimp +=1;
+      upgradeShrimpUpgradePercent += 0.10;
+      int = int - (upgradeShrimpCost);
+      upgradeShrimpCost = Math.round(upgradeShrimpBaseCost * (1.30**upgradeShrimp));
+      update();
+    }
+     document.getElementById("shrimpUpgradeCost").innerHTML = "Current cost of the shrimp in question is " + (upgradeShrimpCost) + " Int.";
+     document.getElementById("shrimpUpgradeLevel").innerHTML = "You have bought the shrimp in question " + upgradeShrimp + " times.";
   }  
   window.addEventListener('beforeunload', getLastKnownTimePlease());
 </script>
