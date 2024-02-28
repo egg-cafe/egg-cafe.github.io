@@ -1,0 +1,20 @@
+{
+  "name": "Mocha",
+  "description": "Enmity theme mhm",
+  "version": "1.0",
+  "color": "#99582A",
+  "authors": [
+    {
+      "name": "egg.cafe",
+      "id"; "1015049434607927306"
+    }
+  ],
+  "theme_color_map": {
+    "HEADER_PRIMARY": [
+      "#99582A"
+      "#99582A"
+    ],
+    "HEADER_SECONDARY": [
+      "#99582A",
+      "#99582A"
+    ],
