@@ -54,6 +54,7 @@ font-size: 200%;
 </head>
 <div class="supremeDiv">
 <div class="centerStuff">
+  <button onclick="tempReset()">Temp reset - reset shrimps</button>
   <h1>Integer Increaser</h1>
   <h2>Bigger Number = Better Person</h2>
 <p id="Count" class="intCounter"></p>
@@ -124,7 +125,7 @@ font-size: 200%;
   var tree = parseInt(localStorage.getItem('tree')) || 0;
   var treeCost = parseInt(localStorage.getItem('treeCost')) || 5000;
   var grandMult = parseInt(localStorage.getItem('grandMult')) || 1;
-  var changelog = "Reset button now has a confirmation. Added Trees.";
+  var changelog = "Updated Changelog, among other things.";
   var isShownChangelog = 0;//This value doesn't need to be stored.
   var isShownReviews = 0;
   var amazingReviewsFrfr = "10/10 best clicker i've played in years - bryonnvr";
@@ -330,6 +331,10 @@ font-size: 200%;
   localStorage.setItem('upgradeShrimpCost', upgradeShrimpCost.toString());
   //localStorage.setItem I need this to copy paste later.
   }
+  function tempReset() {
+    shrimp=0;
+    update();
+  } 
   function buyGod() {
    if (int >= godCost) { 
     god +=1;
