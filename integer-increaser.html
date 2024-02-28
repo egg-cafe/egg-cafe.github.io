@@ -333,6 +333,7 @@ font-size: 200%;
   }
   function tempReset() {
     shrimp=0;
+    shrimpCost = Math.round(baseValueShrimp * (1.20**shrimp));
     update();
   } 
   function buyGod() {
