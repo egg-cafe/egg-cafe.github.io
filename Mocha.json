@@ -10,7 +10,7 @@
     }
   ],
   "semanticColors": {
-    "HEADER_PRIMARY": [
+    "HEADER_colours.PRIMARY_DARK": [
       "#FEFAE0",
       "#ffffff"
     ],
@@ -42,7 +42,7 @@
       "#FEFAE0",
       "#FFFFFF"
     ],
-    "BACKGROUND_PRIMARY": [
+    "BACKGROUND_colours.PRIMARY_DARK": [
       "#BC6C25",
       "#ffffff"
     ],
@@ -66,7 +66,7 @@
       "#DDA15E",
       "#ffffff"
     ],
-    "BACKGROUND_MOBILE_PRIMARY": [
+    "BACKGROUND_MOBILE_colours.PRIMARY_DARK": [
       "#BC6C25",
       "#ffffff"
     ],
@@ -130,7 +130,7 @@
       "#DDA15E",
       "#ffffff"
     ],
-    "CARD_PRIMARY_BG": [
+    "CARD_colours.PRIMARY_DARK_BG": [
       "#BC6C25"
     ],
     "TEXT_LINK": [
@@ -147,19 +147,19 @@
     ]
   },
   "rawColors": {
-    "PRIMARY": "#000000",
+    "colours.PRIMARY_DARK": "#FEFAE0",
     "BRAND_260": "#8a94a8",
-    "PRIMARY_100": "#BC6C25",
-    "PRIMARY_200": "#BC6C25",
-    "PRIMARY_300": "#DDA15E",
-    "PRIMARY_360": "#DDA15E",
-    "PRIMARY_400": "#DDA15E",
-    "PRIMARY_500": "#DDA15E",
-    "PRIMARY_600": "#DDA15E",
-    "PRIMARY_630": "#DDA15E",
-    "PRIMARY_700": "#DDA15E",
-    "PRIMARY_800": "#DDA15E",
-    "PRIMARY_900": "#DDA15E",
+    "colours.PRIMARY_DARK_100": "#BC6C25",
+    "colours.PRIMARY_DARK_200": "#BC6C25",
+    "colours.PRIMARY_DARK_300": "#DDA15E",
+    "colours.PRIMARY_DARK_360": "#DDA15E",
+    "colours.PRIMARY_DARK_400": "#DDA15E",
+    "colours.PRIMARY_DARK_500": "#DDA15E",
+    "colours.PRIMARY_DARK_600": "#DDA15E",
+    "colours.PRIMARY_DARK_630": "#DDA15E",
+    "colours.PRIMARY_DARK_700": "#DDA15E",
+    "colours.PRIMARY_DARK_800": "#DDA15E",
+    "colours.PRIMARY_DARK_900": "#DDA15E",
     "PLUM_1": "#DDA15E",
     "PLUM_10": "#DDA15E",
     "PLUM_11": "#DDA15E",
