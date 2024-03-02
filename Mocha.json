@@ -87,11 +87,11 @@
       "#ffffff"
     ],
     "BACKGROUND_MODIFIER_HOVER": [
-      "#FEFAE0",
+      "#DDA15E",
       "#ffffff"
     ],
     "BACKGROUND_MODIFIER_ACTIVE": [
-      "#FEFAE0",
+      "#DDA15E",
       "#ffffff"
     ],
     "BACKGROUND_MODIFIER_SELECTED": [
@@ -119,11 +119,11 @@
       "transparent"
     ],
     "CHANNELTEXTAREA_BACKGROUND": [
-      "#BC6C25",
+      "#FEFAE0",
       "#ffffff"
     ],
     "CHAT_BACKGROUND": [
-      "#BC6C25",
+      "#FEFAE0",
       "#ffffff"
     ],
     "CHANNELS_DEFAULT": [
