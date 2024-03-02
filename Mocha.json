@@ -83,15 +83,15 @@
       "#ffffff"
     ],
     "BACKGROUND_MESSAGE_HOVER": [
-      "#FEFAE0",
+      "#DDA15E",
       "#ffffff"
     ],
     "BACKGROUND_MODIFIER_HOVER": [
-      "#DDA15E",
+      "#FEFAE0",
       "#ffffff"
     ],
     "BACKGROUND_MODIFIER_ACTIVE": [
-      "#DDA15E",
+      "#FEFAE0",
       "#ffffff"
     ],
     "BACKGROUND_MODIFIER_SELECTED": [
