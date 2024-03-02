@@ -63,7 +63,7 @@
       "#ffffff"
     ],
     "BACKGROUND_FLOATING": [
-      "#FEFAE0",
+      "#DDA15E",
       "#ffffff"
     ],
     "BACKGROUND_MOBILE_PRIMARY": [
@@ -83,7 +83,7 @@
       "#ffffff"
     ],
     "BACKGROUND_MESSAGE_HOVER": [
-      "#DDA15E",
+      "#FEFAE0",
       "#ffffff"
     ],
     "BACKGROUND_MODIFIER_HOVER": [
