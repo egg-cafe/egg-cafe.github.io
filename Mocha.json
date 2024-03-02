@@ -10,7 +10,7 @@
     }
   ],
   "semanticColors": {
-    "HEADER_colours.PRIMARY_DARK": [
+    "HEADER_PRIMARY": [
       "#FEFAE0",
       "#ffffff"
     ],
@@ -42,7 +42,7 @@
       "#FEFAE0",
       "#FFFFFF"
     ],
-    "BACKGROUND_colours.PRIMARY_DARK": [
+    "BACKGROUND_PRIMARY": [
       "#BC6C25",
       "#ffffff"
     ],
@@ -66,7 +66,7 @@
       "#DDA15E",
       "#ffffff"
     ],
-    "BACKGROUND_MOBILE_colours.PRIMARY_DARK": [
+    "BACKGROUND_MOBILE_PRIMARY": [
       "#BC6C25",
       "#ffffff"
     ],
@@ -130,7 +130,7 @@
       "#DDA15E",
       "#ffffff"
     ],
-    "CARD_colours.PRIMARY_DARK_BG": [
+    "CARD_PRIMARY_BG": [
       "#BC6C25"
     ],
     "TEXT_LINK": [
