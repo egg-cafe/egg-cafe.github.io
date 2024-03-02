@@ -119,15 +119,15 @@
       "transparent"
     ],
     "CHANNELTEXTAREA_BACKGROUND": [
-      "#FEFAE0",
+      "#DDA15E",
       "#ffffff"
     ],
     "CHAT_BACKGROUND": [
-      "#FEFAE0",
+      "#DDA15E",
       "#ffffff"
     ],
     "CHANNELS_DEFAULT": [
-      "#DDA15E",
+      "#FEFAE0",
       "#ffffff"
     ],
     "CARD_PRIMARY_BG": [
