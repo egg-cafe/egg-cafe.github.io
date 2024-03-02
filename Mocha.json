@@ -2,7 +2,7 @@
   "name": "Mocha",
   "description": "mmm.",
   "version": "1.0",
-  "color": "#99582A",
+  "color": "#BC6C25",
   "authors": [
     {
       "name": "egg.cafe",
@@ -12,34 +12,34 @@
   "semanticColors": {
     "HEADER_PRIMARY": [
       "#99582A",
-      "#99582A"
+      "#FEFAE0"
     ],
     "HEADER_SECONDARY": [
       "#99582A",
-      "#99582A"
+      "#FEFAE0"
     ],
     "TEXT_NORMAL": [
       "#99582A",
       "#FEFAE0"
     ],
     "TEXT_MUTED": [
-      "#C3C3C3",
-      "#99582A"
+      "#BC6C25",
+      "#BC6C25"
     ],
     "INTERACTIVE_NORMAL": [
-      "#89D59E",
+      "#BC6C25",
       "#99582A"
     ],
     "INTERACTIVE_HOVER": [
-      "#89D59E",
+      "#BC6C25",
       "#99582A"
     ],
     "INTERACTIVE_ACTIVE": [
-      "#89D59E",
+      "#BC6C25",
       "#99582A"
     ],
     "INTERACTIVE_MUTED": [
-      "#89D59E",
+      "#BC6C25",
       "#99582A"
     ],
     "BACKGROUND_PRIMARY": [
@@ -51,19 +51,19 @@
       "#99582A"
     ],
     "BACKGROUND_SECONDARY_ALT": [
-      "#36553F",
+      "#BC6C25",
       "#99582A"
     ],
     "BACKGROUND_TERTIARY": [
-      "#36553F",
+      "#BC6C25",
       "#99582A"
     ],
     "BACKGROUND_ACCENT": [
-      "#272c35",
+      "#BC6C25",
       "#99582A"
     ],
     "BACKGROUND_FLOATING": [
-      "#111317",
+      "#BC6C25",
       "#99582A"
     ],
     "BACKGROUND_MOBILE_PRIMARY": [
@@ -79,7 +79,7 @@
       "#99582A"
     ],
     "BACKGROUND_MENTIONED": [
-      "#333333",
+      "#BC6C25",
       "#99582A"
     ],
     "BACKGROUND_MESSAGE_HOVER": [
@@ -91,11 +91,11 @@
       "#99582A"
     ],
     "BACKGROUND_MODIFIER_ACTIVE": [
-      "#5E5E5E",
+      "#BC6C25",
       "#99582A"
     ],
     "BACKGROUND_MODIFIER_SELECTED": [
-      "#5E5E5E",
+      "#BC6C25",
       "#99582A"
     ],
     "BACKGROUND_MODIFIER_ACCENT": [
@@ -103,7 +103,7 @@
       "transparent"
     ],
     "SCROLLBAR_THIN_THUMB": [
-      "#333333",
+      "#BC6C25",
       "#99582A"
     ],
     "SCROLLBAR_THIN_TRACK": [
@@ -111,7 +111,7 @@
       "transparent"
     ],
     "SCROLLBAR_AUTO_THUMB": [
-      "#333333",
+      "#BC6C25",
       "#99582A"
     ],
     "SCROLLBAR_AUTO_TRACK": [
@@ -127,14 +127,14 @@
       "#99582A"
     ],
     "CHANNELS_DEFAULT": [
-      "#D5D5D5",
+      "#BC6C25",
       "#99582A"
     ],
     "CARD_PRIMARY_BG": [
       "#FEFAE0"
     ],
     "TEXT_LINK": [
-      "#89D59E",
+      "#BC6C25",
       "#99582A"
     ],
     "KEYBOARD": [
@@ -142,7 +142,7 @@
       "#99582A"
     ],
     "CHANNEL_ICON": [
-      "#89D59E",
+      "#BC6C25",
       "#99582A"
     ]
   },
