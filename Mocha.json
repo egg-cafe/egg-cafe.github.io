@@ -27,11 +27,11 @@
       "#ffffff"
     ],
     "INTERACTIVE_NORMAL": [
-      "#283618",
+      "#606C38",
       "#FFFFFF"
     ],
     "INTERACTIVE_HOVER": [
-      "#283618",
+      "#606C38",
       "#ffffff"
     ],
     "INTERACTIVE_ACTIVE": [
@@ -39,7 +39,7 @@
       "#FFFFFF"
     ],
     "INTERACTIVE_MUTED": [
-      "#283618",
+      "#606C38",
       "#FFFFFF"
     ],
     "BACKGROUND_PRIMARY": [
@@ -178,7 +178,7 @@
     "YELLOW_300": "#ffffff",
     "GREEN_600": "#ffffff",
     "DANGER": "#DDA15E",
-    "RED": "#283618"
+    "RED": "#606C38"
   },
   "unsafe_colors": {
     "CHAT_GREY": "#8E8E8E"
