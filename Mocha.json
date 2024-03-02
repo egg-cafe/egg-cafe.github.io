@@ -47,7 +47,7 @@
       "#ffffff"
     ],
     "BACKGROUND_SECONDARY": [
-      "#FEFAE0",
+      "#BC6C25",
       "#ffffff"
     ],
     "BACKGROUND_SECONDARY_ALT": [
@@ -71,11 +71,11 @@
       "#ffffff"
     ],
     "BACKGROUND_MOBILE_SECONDARY": [
-      "#BC6C25",
+      "#FEFAE0",
       "#ffffff"
     ],
     "BACKGROUND_NESTED_FLOATING": [
-      "#BC6C25",
+      "#FEFAE0",
       "#ffffff"
     ],
     "BACKGROUND_MENTIONED": [
