@@ -3,16 +3,7 @@ html, body {
   text-align: center;
   user-select: none;
 }
-button {
-  touch-action: none;
-  border-radius: 25px;
-  width: 100%;
-  text-align: center;
-  width: 200px;
-  height: 30px;
-  min-height: 25px;
-  max-height: 35px;
-}
+
 .reset {
   background: #FF0000;
   color: #FFFFFF;
