@@ -168,7 +168,7 @@ font-size: 200%;
   var upgradecRH = parseInt(localStorage.getItem('upgradecRH')) || 0;
   var upgradecRHCost = parseInt(localStorage.getItem('upgradecRH')) || 10000000;
   var upgradecRHBaseCost = 10000000;
-  var intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult*upgradeTreeUpgradePercent)+(shrimp*15*grandMult*upgradeShrimpUpgradePercent)+(c*RH*50*grandMult*upgradecRHUpgradePercent))) || 0;//I really need to use this value more often
+  var intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult*upgradeTreeUpgradePercent)+(shrimp*15*grandMult*upgradeShrimpUpgradePercent)+(cRH*50*grandMult*upgradecRHUpgradePercent))) || 0;//I really need to use this value more often
   setAll();
   awayInt();
   saveToLocalStorage();
@@ -377,7 +377,7 @@ font-size: 200%;
   function update() {
   document.getElementById("Count").innerHTML = (Math.round(int) + " Int.");
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
-  intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult*upgradeTreeUpgradePercent)+(shrimp*15*grandMult*upgradeShrimpUpgradePercent)+(c*RH*50*grandMult*upgradecRHUpgradePercent)));//This is important. Control + F to find this in the future.
+  intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult*upgradeTreeUpgradePercent)+(shrimp*15*grandMult*upgradeShrimpUpgradePercent)+(cRH*50*grandMult*upgradecRHUpgradePercent)));//This is important. Control + F to find this in the future.
   document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + intPerSecond + " Int/Second.";
   saveToLocalStorage();
   } 
