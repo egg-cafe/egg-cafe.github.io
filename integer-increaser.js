@@ -2,6 +2,7 @@
   var lastKnownTime = parseInt(localStorage.getItem('lastKnownTime')) || Math.round(Date.now() / 1000);
   var pageLoadTime = Math.round(Date.now() / 1000);
   var int = parseInt(localStorage.getItem('int')) || 0;
+  var allTimeInt = parseInt(localStorage.getItem('allTimeInt')) || 0;
   var mult = parseInt(localStorage.getItem('mult')) || 0;
   var currentCost = parseInt(localStorage.getItem('currentCost')) || 5;
   var idle = parseInt(localStorage.getItem('idle')) || 0;
@@ -119,6 +120,7 @@
     upgradecRH = 0;
     upgradecRHCost = 10000000;
     upgradecRHBaseCost = 10000000;
+    allTimeInt = 0;
     setAll();
     saveToLocalStorage();
   }
@@ -203,6 +205,7 @@
   document.getElementById("cRHLevel").innerHTML = "You have visted the Chicago Rat Hole " + cRH + " times";
   document.getElementById("cRHUpgradeCost").innerHTML = "The rat would like the next offering to be " + (upgradecRHCost) + " Int.";
   document.getElementById("cRHUpgradeLevel").innerHTML = "You have made an offering " + upgradecRH + " times.";
+  document.getElementById("allTheInt").innerHTML = "You've made a total of " + allTimeInt + " Int.";
   }  
   function saveToLocalStorage() {
   localStorage.setItem('int', int.toString());
@@ -240,6 +243,7 @@
   localStorage.setItem('upgradecRHUpgradePercent', upgradecRHUpgradePercent.toString());
   localStorage.setItem('upgradecRH', upgradecRH.toString());
   localStorage.setItem('upgradecRHCost', upgradecRHCost.toString());
+  localStorage.setItem('allTimeInt', allTimeInt.toString());
   //localStorage.setItem I need this to copy paste later. | Later is now 10/5/24
   }
   function tempReset() {
@@ -263,6 +267,7 @@
   document.getElementById("title").innerHTML = ("Integer Increaser - " + int + " Int");
   intPerSecond = Math.round(((idle*grandMult*upgradeIdleUpgradePercent)+(domain*3*grandMult*upgradeDomainUpgradePercent)+(tree*7*grandMult*upgradeTreeUpgradePercent)+(shrimp*15*grandMult*upgradeShrimpUpgradePercent)+(cRH*50*grandMult*upgradecRHUpgradePercent)));//This is important. Control + F to find this in the future.
   document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + intPerSecond + " Int/Second.";
+  document.getElementById("allTheInt").innerHTML = "You've made a total of " + allTimeInt + " Int. (All time)";
   saveToLocalStorage();
   } 
   function domainLevel() {
