@@ -1,0 +1,158 @@
+:root {
+    font-family: "Quicksand", sans-serif;
+    color: #3d1e6d;
+}
+body {
+    background-image: url(https://cdn.egg.cafe/DSCF0052.JPG);
+    background-position: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.welcome {
+    font-size: 120%;
+    margin: auto;
+    z-index: 2;
+    padding: 2rem, 2rem, 2rem, 2rem;
+    position: absolute;
+}
+.contact {
+    font-size: 80%;
+}
+.about {/*I hate css with a passion*/
+  --alignment: left;
+  --flex-alignment: flex-start;
+  --indent-left: 1;
+  --indent-right: 0;
+  --margin-left: 0;
+  --margin-right: auto;
+  --border-radius-tl: 0.5rem;
+  --border-radius-tr: 0.5rem;
+  --border-radius-br: 0.5rem;
+  --border-radius-bl: 0.5rem;
+  font-size: clamp(0.5rem, 3vw, 1.5rem);
+  width: 39vw; 
+  height: 40vh; 
+  max-width: 300px; 
+  max-height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  margin-top: 10rem;
+  align-items: center;
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: center;
+  max-width: 100%;
+  position: relative;
+  text-align: var(--alignment);
+  z-index: 1;
+  background-color: rgba(246, 215, 252, .67);
+  box-shadow: 0rem 1.237rem 4rem 0rem rgba(246, 204, 255);
+  border-radius: var(--border-radius-tl) var(--border-radius-tr) var(--border-radius-br) var(--border-radius-bl);
+}
+.mysterious-box {
+    --alignment: right;
+    --flex-alignment: flex-start;
+    --indent-left: 0;
+    --indent-right: 1;
+    --margin-left: auto;
+    --margin-right: 0;
+    --border-radius-tl: 0.5rem;
+    --border-radius-tr: 0.5rem;
+    --border-radius-br: 0.5rem;
+    --border-radius-bl: 0.5rem;
+    font-size: clamp(0.5rem, 3vw, 1.5rem);
+    width: 80vw; 
+    height: 40vh;
+    max-width: 300px; 
+    max-height: 300px;
+    position: relative;
+    top: 50%;
+    left: 10%;
+    align-items: center;
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: center;
+    max-width: 100%;
+    position: relative;
+    text-align: var(--alignment);
+    z-index: 1;
+    background-color: rgba(246, 215, 252, .67);
+    box-shadow: 0rem 1.237rem 4rem 0rem rgba(246, 204, 255);
+    border-radius: var(--border-radius-tl) var(--border-radius-tr) var(--border-radius-br) var(--border-radius-bl);
+}
+.box-right-a {
+  --alignment: right;
+  --flex-alignment: flex-start;
+  --indent-left: 0;
+  --indent-right: 1;
+  --margin-left: auto;
+  --margin-right: 0;
+  --border-radius-tl: 0.5rem;
+  --border-radius-tr: 0.5rem;
+  --border-radius-br: 0.5rem;
+  --border-radius-bl: 0.5rem;
+  font-size: clamp(0.5rem, 3vw, 1.5rem);
+  width: 39vw; 
+  height: calc(40vh / 2.66128205128); /*This is not a random number, it is 40 / 19.5 + .61 Don't even ask.*/
+  max-width: 300px; 
+  max-height: 300px;
+  position: relative;
+  top: 50%;
+  left: 105%;
+  align-items: center;
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: center;
+  max-width: 100%;
+  position: relative;
+  text-align: var(--alignment);
+  z-index: 1;
+  background-color: rgba(246, 215, 252, .67);
+  box-shadow: 0rem 1.237rem 4rem 0rem rgba(246, 204, 255);
+  border-radius: var(--border-radius-tl) var(--border-radius-tr) var(--border-radius-br) var(--border-radius-bl);
+}
+.the-gap {
+    height:2vh;
+    width:2vw;
+}
+.box-right-b {
+    --alignment: right;
+    --flex-alignment: flex-start;
+    --indent-left: 0;
+    --indent-right: 1;
+    --margin-left: auto;
+    --margin-right: 0;
+    --border-radius-tl: 0.5rem;
+    --border-radius-tr: 0.5rem;
+    --border-radius-br: 0.5rem;
+    --border-radius-bl: 0.5rem;
+    font-size: clamp(0.5rem, 3vw, 1.5rem);
+    width: 39vw; 
+    height: calc(40vh / 2.66128205128); /*This is not a random number, it is 40 / 19.5 + .61 Don't even ask.*/
+    max-width: 300px; 
+    max-height: 300px;
+    position: relative;
+    top: 50%;
+    left: 105%;
+    align-items: center;
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: center;
+    max-width: 100%;
+    position: relative;
+    text-align: var(--alignment);
+    z-index: 1;
+    background-color: rgba(246, 215, 252, .67);
+    box-shadow: 0rem 1.237rem 4rem 0rem rgba(246, 204, 255);
+    border-radius: var(--border-radius-tl) var(--border-radius-tr) var(--border-radius-br) var(--border-radius-bl);
+  }
+.me {
+    position: relative;
+    max-width: 100%;
+
+}
