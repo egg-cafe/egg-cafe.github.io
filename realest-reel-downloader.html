@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>The Egg Cafe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main2.css">
+</head>
+<body>
+    <div class="about">
+        <div class="welcome">
+          <p><strong>Downloading instagram reels sucks<br>There's just way too many ads.</strong></p>
+          <footer class="contact">Broken? Contact: egg.cafe.real@gmail.com</footer>
+        </div>
+        <div class="box-right">
+          <div class="box-right-a">
+            <p class=""><strong>Just paste the link below and it should hopefully I pray please for real download it trust.</strong></p>
+          </div>
+          <div class="the-gap">
+          </div>
+           <div class="box-right-b">
+            <p class=""><strong><form id="videoForm"><input name="url" id="url" placeholder="Put the link here :3" required><button type="submit">Download.</button></form></strong></p>
+           </div>
+         </div>
+      </div>
+
+  <script src="https://cdn.egg.cafe/script.js"></script>
+  <script>
+    document.getElementById("videoForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const url = document.getElementById("url").value;
+  
+      try {
+        const response = await fetch("https://the-coolest-downloader-967413085694.europe-west1.run.app/get_raw_video", {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ url }),
+        });
+  
+        const data = await response.json();
+  
+        if (response.ok && data.download_url) {
+          try {
+            const videoResponse = await fetch(data.download_url);
+           if (!videoResponse.ok) throw new Error("Failed to fetch video file");
+           const blob = await videoResponse.blob();
+           const blobUrl = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = blobUrl;
+          a.download = "instagram_video.mp4";
+         document.body.appendChild(a);
+         a.click();
+         a.remove();
+
+    URL.revokeObjectURL(blobUrl); // Clean up
+  } catch (error) {
+    alert("Error downloading the video file: " + error.message);
+  }
+}
+
+      } catch (error) {
+        console.error("Error fetching video:", error);
+        alert("An error occurred. Check the console for details.");
+      }
+    });
+  </script>
+  
+  </body>
+</html>
