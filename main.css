@@ -8,6 +8,14 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+@media (orientation: portrait) {
+    body {
+        background-image: url(https://cdn.egg.cafe/mainBgPortrait.png);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
 .welcome {
     font-size: 120%;
     margin: auto;
