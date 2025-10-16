@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+  <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -66,7 +66,7 @@ font-size: 200%;
 <button onclick="upgrade()" oncontextmenu="return false;" tabindex="-1" >Upgrade</button>
 <p id="currentCost"></p>
 <p id="upgrade"></p>
-<button onclick="idleLevel()" oncontextmenu="return false;" tabindex="-1">Buy an indentured servant</button><button onclick="upgradeUpgrade()" oncontextmenu="return false;" tabindex="-1">Better Conditions</button>
+<button onclick="idleLevel()" oncontextmenu="return false;" tabindex="-1">Buy an indentured servant</button><button onclick="upgradeUpgrade()" oncontextmenu="return false;" tabindex="-1" class="hidden" data-unlock-for="idle" data-unlock-threshold="25">Better Conditions</button>
 <p id="idleCost"></p>
 <p>He is unpaid, and he is happy.</p>
 <p>He also lives in the factory and has an 18-hour work day.</p>
@@ -74,27 +74,28 @@ font-size: 200%;
 <p id="idleLv">You have 0 employees.</p>
 <p id="upgradeCost"></p>
 <p id="upgradeIdle"></p>
-<button onclick="domainLevel()" oncontextmenu="return false;" tabindex="-1">Buy a domain expansion.</button><button onclick="upgradeDomainReal()" oncontextmenu="return false;" tabindex="-1">Upgrade the range.</button>
+<button onclick="domainLevel()" oncontextmenu="return false;" tabindex="-1">Buy a domain expansion.</button><button onclick="upgradeDomainReal()" oncontextmenu="return false;" tabindex="-1" class="hidden" data-unlock-for="domain" data-unlock-threshold="25">Upgrade the range.</button>
 <p id="domainCost"></p>
 <p>Yeah we aren't sure how you can just buy that.</p>
 <p id="domainLevel"></p>
 <p id="domainUpgradeCost"></p>
 <p>Upgrade the range of the domain.</p>
 <p id = domainUpgradeLevel></p>
-<button onclick="treeLevel()" oncontextmenu="return false;" tabindex="-1">Buy a tree.</button><button onclick="treeUpgradeReal()" oncontextmenu="return false;" tabindex="-1">Buy fertilizer.</button>
+<button onclick="treeLevel()" oncontextmenu="return false;" tabindex="-1">Buy a tree.</button><button onclick="treeUpgradeReal()" oncontextmenu="return false;" tabindex="-1" class="hidden" data-unlock-for="tree" data-unlock-threshold="25">Buy fertilizer.</button>
 <p id ="treeCost"></p>
 <p>How does this work, no idea. Grows Int on it's branches or something</p>
 <p id="treeLevel"></p>
 <p id="treeUpgradeCost"></p>
 <p id="treeUpgradeLevel"></p>
-<button onclick="shrimpLevel()" oncontextmenu="return false;" tabindex="-1">Buy shrimp fried rice.</button><button onclick="shrimpUpgradeReal()" oncontextmenu="return false;" tabindex="-1">Buy the shrimp in question.</button>
+<button onclick="shrimpLevel()" oncontextmenu="return false;" tabindex="-1">Buy shrimp fried rice.</button>
+<button onclick="shrimpUpgradeReal()" oncontextmenu="return false;" tabindex="-1" class="hidden" data-unlock-for="shrimp" data-unlock-threshold="25">Buy the shrimp in question.</button>
 <p>There's no way a shrimp fried this rice!</p>
 <p id="shrimpLevel"></p>
 <p id="shrimpCost"></p>
 <p><strong>The shrimp in question.</strong></p>
 <p id="shrimpUpgradeLevel"></p>
 <p id="shrimpUpgradeCost"></p>
-<button onclick="cRHLevel()" oncontextmenu="return false;" tabindex="-1">Buy a trip to the <a href="https://en.wikipedia.org/wiki/Chicago_rat_hole" target="_blank">Chicago rat hole</a></button><button onclick="cRHUpgradeReal()" oncontextmenu="return false;" tabindex="-1">Make an offering to the rats.</button>
+<button onclick="cRHLevel()" oncontextmenu="return false;" tabindex="-1">Buy a trip to the <a href="https://en.wikipedia.org/wiki/Chicago_rat_hole" target="_blank">Chicago rat hole</a></button><button onclick="cRHUpgradeReal()" oncontextmenu="return false;" tabindex="-1" class="hidden" data-unlock-for="cRH" data-unlock-threshold="25">Make an offering to the rats.</button>
 <p>Befriend the rats.</p>
 <p id="cRHLevel"></p>
 <p id="cRHCost"></p>

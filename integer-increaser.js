@@ -14,7 +14,7 @@
   var tree = parseInt(localStorage.getItem('tree')) || 0;
   var treeCost = parseInt(localStorage.getItem('treeCost')) || 5000;
   var grandMult = parseInt(localStorage.getItem('grandMult')) || 1;
-  var changelog = "Updated Changelog, among other things.";
+  var changelog = "The Offering was made cheaper. Be thankful.";
   var isShownChangelog = 0;//This value doesn't need to be stored.
   var isShownReviews = 0;
   var amazingReviewsFrfr = "10/10 best clicker i've played in years - byeoon";
@@ -118,8 +118,8 @@
     baseValuecRH = 500000;
     upgradecRHUpgradePercent = 1;
     upgradecRH = 0;
-    upgradecRHCost = 10000000;
-    upgradecRHBaseCost = 10000000;
+    upgradecRHCost = 5000000;
+    upgradecRHBaseCost = 5000000;
     allTimeInt = 0;
     setAll();
     saveToLocalStorage();
@@ -206,7 +206,31 @@
   document.getElementById("cRHUpgradeCost").innerHTML = "The rat would like the next offering to be " + (upgradecRHCost) + " Int.";
   document.getElementById("cRHUpgradeLevel").innerHTML = "You have made an offering " + upgradecRH + " times.";
   document.getElementById("allTheInt").innerHTML = "You've made a total of " + allTimeInt + " Int.";
+  // Show/hide unlockable UI elements based on current values
+  checkUnlocks();
   }  
+
+  // Generic unlocker: elements gain/remove .hidden based on data attributes
+  function checkUnlocks() {
+    // find elements with data-unlock-for (variable name) and optional data-unlock-threshold
+    var unlockables = document.querySelectorAll('[data-unlock-for]');
+    unlockables.forEach(function(el) {
+      var varName = el.getAttribute('data-unlock-for');
+      var threshold = parseFloat(el.getAttribute('data-unlock-threshold')) || 1;
+      // read the variable from the global scope if it exists
+      var value = window[varName];
+      if (typeof value === 'undefined') {
+        // if no such global var, keep hidden
+        el.classList.add('hidden');
+        return;
+      }
+      if (value >= threshold) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+  }
   function saveToLocalStorage() {
   localStorage.setItem('int', int.toString());
   localStorage.setItem('mult', mult.toString());
@@ -269,6 +293,7 @@
   document.getElementById("intPerSecond").innerHTML = "Your idle int per second is " + intPerSecond + " Int/Second.";
   document.getElementById("allTheInt").innerHTML = "You've made a total of " + allTimeInt + " Int. (All time)";
   saveToLocalStorage();
+  if (typeof checkUnlocks === 'function') checkUnlocks();
   } 
   function domainLevel() {
     if (int >= domainCost) {

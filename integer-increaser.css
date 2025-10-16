@@ -4,6 +4,41 @@ html, body {
   user-select: none;
 }
 
+button {
+  font-family: 'Cabin', sans-serif;
+  font-size: 15px;
+  background: #ffa6a6;
+  color: white;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+button:hover {
+  background: #ff7b7b;
+  color: white;
+  font-size: 17px;
+}
+
+.hidden {
+  display: none;
+}
+
+a{
+  text-decoration: none;
+  color: #066196
+}
+
+a:hover {
+  color: #00a0fd;
+  text-decoration: none;
+}
+
 .reset {
   background: #FF0000;
   color: #FFFFFF;
