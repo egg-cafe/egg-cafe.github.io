@@ -68,10 +68,11 @@ body {
     font-size: clamp(0.5rem, 3vw, 1.5rem);
     width: 75vw; 
     min-height: 10vh;
-    height: auto;
+    height: 15hv;
     position: relative;
+    margin-bottom: 4vh;
     top: 120%;
-    padding-top: 2vh;
+    padding-top: 1vh;
     display: flex;
     flex-grow: 0;
     flex-shrink: 0;
@@ -103,4 +104,17 @@ a:visited {
 .description {
     font-size: 95%;
     color: #5e2ca5;
+}
+button {
+    margin-left: 2vw;
+    background-color: #f6d7fc;
+    color: #3d1e6d;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+input {
+    background-color: #f6d7fc;
+    color: #3d1e6d;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
 }
